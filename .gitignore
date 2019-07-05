@@ -1,0 +1,62 @@
+# Prerequisites
+*.d
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+\.vs/beetok-core/v15/Browse\.VC\.db
+
+\.vs/beetok-core/v15/Browse\.VC\.opendb
+
+\.vs/ProjectSettings\.json
+
+\.vs/slnx\.sqlite
+
+\.vs/beetok-core/v15/\.suo
+
+\.vs/beetok-core/v15/ipch/AutoPCH/54b8d9a1e354f82/POW\.ipch
+
+\.vs/beetok-core/v15/ipch/AutoPCH/6022c6eb9483ef8f/SPORK\.ipch
+
+\.vs/VSWorkspaceState\.json
+
+\.vs/beetok-core/v15/ipch/AutoPCH/62ee637654a070c9/CLIENTVERSION\.ipch
+
+\.vs/Beetok/v15/\.suo
+
+\.vs/Beetok/v15/Browse\.VC\.db
+
+\.vs/Beetok/v15/Browse\.VC\.opendb
+
+\.vs/Beetok/v15/ipch/AutoPCH/ae069a83827da561/CLIENTVERSION\.ipch
+
+\.vs/Beetok/v15/ipch/AutoPCH/6f79583190db2e41/CLIENTVERSION\.ipch
+
+\.vs/Beetok/v15/ipch/AutoPCH/e46c84243d5a0ab8/POW\.ipch
