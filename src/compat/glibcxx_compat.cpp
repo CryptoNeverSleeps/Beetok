@@ -10,6 +10,7 @@ namespace
 {
 // trigger: use ctype<char>::widen to trigger ctype<char>::_M_widen_init().
 // test: convert a char from narrow to wide and back. Verify that the result
+// TFinch
 //   matches the original.
 bool sanity_test_widen(char testchar)
 {

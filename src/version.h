@@ -10,6 +10,7 @@
 
 /**
  * network protocol versioning
+ * Forked from Tfinch work
  */
 static const int PROTOCOL_VERSION = 72007;
 
