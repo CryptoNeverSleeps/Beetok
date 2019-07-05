@@ -2,7 +2,7 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "zabetwallet.h"
+#include "zbtokwallet.h"
 #include "main.h"
 #include "txdb.h"
 #include "walletdb.h"
@@ -12,7 +12,7 @@
 
 using namespace libzerocoin;
 
-CzABETWallet::CzABETWallet(std::string strWalletFile)
+CzBTOKWallet::CzBTOKWallet(std::string strWalletFile)
 {
     this->strWalletFile = strWalletFile;
     CWalletDB walletdb(strWalletFile);
@@ -23,12 +23,12 @@ CzABETWallet::CzABETWallet(std::string strWalletFile)
     //Check for old db version of storing zbtok seed
     if (fFirstRun) {
         uint256 seed;
-        if (walletdb.ReadZABETSeed_deprecated(seed)) {
+        if (walletdb.ReadZBTOKSeed_deprecated(seed)) {
             //Update to new format, erase old
             seedMaster = seed;
             hashSeed = Hash(seed.begin(), seed.end());
             if (pwalletMain->AddDeterministicSeed(seed)) {
-                if (walletdb.EraseZABETSeed_deprecated()) {
+                if (walletdb.EraseZBTOKSeed_deprecated()) {
                     LogPrintf("%s: Updated zBTOK seed databasing\n", __func__);
                     fFirstRun = false;
                 } else {
@@ -67,7 +67,7 @@ CzABETWallet::CzABETWallet(std::string strWalletFile)
     this->mintPool = CMintPool(nCountLastUsed);
 }
 
-bool CzABETWallet::SetMasterSeed(const uint256& seedMaster, bool fResetCount)
+bool CzBTOKWallet::SetMasterSeed(const uint256& seedMaster, bool fResetCount)
 {
 
     CWalletDB walletdb(strWalletFile);
@@ -83,8 +83,8 @@ bool CzABETWallet::SetMasterSeed(const uint256& seedMaster, bool fResetCount)
     nCountLastUsed = 0;
 
     if (fResetCount)
-        walletdb.WriteZABETCount(nCountLastUsed);
-    else if (!walletdb.ReadZABETCount(nCountLastUsed))
+        walletdb.WriteZBTOKCount(nCountLastUsed);
+    else if (!walletdb.ReadZBTOKCount(nCountLastUsed))
         nCountLastUsed = 0;
 
     mintPool.Reset();
@@ -92,18 +92,18 @@ bool CzABETWallet::SetMasterSeed(const uint256& seedMaster, bool fResetCount)
     return true;
 }
 
-void CzABETWallet::Lock()
+void CzBTOKWallet::Lock()
 {
     seedMaster = 0;
 }
 
-void CzABETWallet::AddToMintPool(const std::pair<uint256, uint32_t>& pMint, bool fVerbose)
+void CzBTOKWallet::AddToMintPool(const std::pair<uint256, uint32_t>& pMint, bool fVerbose)
 {
     mintPool.Add(pMint, fVerbose);
 }
 
 //Add the next 20 mints to the mint pool
-void CzABETWallet::GenerateMintPool(uint32_t nCountStart, uint32_t nCountEnd)
+void CzBTOKWallet::GenerateMintPool(uint32_t nCountStart, uint32_t nCountEnd)
 {
 
     //Is locked
@@ -145,7 +145,7 @@ void CzABETWallet::GenerateMintPool(uint32_t nCountStart, uint32_t nCountEnd)
         CBigNum bnSerial;
         CBigNum bnRandomness;
         CKey key;
-        SeedToZABET(seedZerocoin, bnValue, bnSerial, bnRandomness, key);
+        SeedToZBTOK(seedZerocoin, bnValue, bnSerial, bnRandomness, key);
 
         mintPool.Add(bnValue, i);
         CWalletDB(strWalletFile).WriteMintPoolPair(hashSeed, GetPubCoinHash(bnValue), i);
@@ -154,7 +154,7 @@ void CzABETWallet::GenerateMintPool(uint32_t nCountStart, uint32_t nCountEnd)
 }
 
 // pubcoin hashes are stored to db so that a full accounting of mints belonging to the seed can be tracked without regenerating
-bool CzABETWallet::LoadMintPoolFromDB()
+bool CzBTOKWallet::LoadMintPoolFromDB()
 {
     map<uint256, vector<pair<uint256, uint32_t> > > mapMintPool = CWalletDB(strWalletFile).MapMintPool();
 
@@ -165,20 +165,20 @@ bool CzABETWallet::LoadMintPoolFromDB()
     return true;
 }
 
-void CzABETWallet::RemoveMintsFromPool(const std::vector<uint256>& vPubcoinHashes)
+void CzBTOKWallet::RemoveMintsFromPool(const std::vector<uint256>& vPubcoinHashes)
 {
     for (const uint256& hash : vPubcoinHashes)
         mintPool.Remove(hash);
 }
 
-void CzABETWallet::GetState(int& nCount, int& nLastGenerated)
+void CzBTOKWallet::GetState(int& nCount, int& nLastGenerated)
 {
     nCount = this->nCountLastUsed + 1;
     nLastGenerated = mintPool.CountOfLastGenerated();
 }
 
 //Catch the counter up with the chain
-void CzABETWallet::SyncWithChain(bool fGenerateMintPool)
+void CzBTOKWallet::SyncWithChain(bool fGenerateMintPool)
 {
     uint32_t nLastCountUsed = 0;
     bool found = true;
@@ -202,7 +202,7 @@ void CzABETWallet::SyncWithChain(bool fGenerateMintPool)
             if (ShutdownRequested())
                 return;
 
-            if (pwalletMain->zabetTracker->HasPubcoinHash(pMint.first)) {
+            if (pwalletMain->zbtokTracker->HasPubcoinHash(pMint.first)) {
                 mintPool.Remove(pMint.first);
                 continue;
             }
@@ -279,7 +279,7 @@ void CzABETWallet::SyncWithChain(bool fGenerateMintPool)
     }
 }
 
-bool CzABETWallet::SetMintSeen(const CBigNum& bnValue, const int& nHeight, const uint256& txid, const CoinDenomination& denom)
+bool CzBTOKWallet::SetMintSeen(const CBigNum& bnValue, const int& nHeight, const uint256& txid, const CoinDenomination& denom)
 {
     if (!mintPool.Has(bnValue))
         return error("%s: value not in pool", __func__);
@@ -291,7 +291,7 @@ bool CzABETWallet::SetMintSeen(const CBigNum& bnValue, const int& nHeight, const
     CBigNum bnSerial;
     CBigNum bnRandomness;
     CKey key;
-    SeedToZABET(seedZerocoin, bnValueGen, bnSerial, bnRandomness, key);
+    SeedToZBTOK(seedZerocoin, bnValueGen, bnSerial, bnRandomness, key);
 
     //Sanity check
     if (bnValueGen != bnValue)
@@ -325,14 +325,14 @@ bool CzABETWallet::SetMintSeen(const CBigNum& bnValue, const int& nHeight, const
         pwalletMain->AddToWallet(wtx);
     }
 
-    // Add to zabetTracker which also adds to database
-    pwalletMain->zabetTracker->Add(dMint, true);
+    // Add to zbtokTracker which also adds to database
+    pwalletMain->zbtokTracker->Add(dMint, true);
     
     //Update the count if it is less than the mint's count
     if (nCountLastUsed < pMint.second) {
         CWalletDB walletdb(strWalletFile);
         nCountLastUsed = pMint.second;
-        walletdb.WriteZABETCount(nCountLastUsed);
+        walletdb.WriteZBTOKCount(nCountLastUsed);
     }
 
     //remove from the pool
@@ -349,7 +349,7 @@ bool IsValidCoinValue(const CBigNum& bnValue)
     bnValue.isPrime();
 }
 
-void CzABETWallet::SeedToZABET(const uint512& seedZerocoin, CBigNum& bnValue, CBigNum& bnSerial, CBigNum& bnRandomness, CKey& key)
+void CzBTOKWallet::SeedToZBTOK(const uint512& seedZerocoin, CBigNum& bnValue, CBigNum& bnSerial, CBigNum& bnRandomness, CKey& key)
 {
     ZerocoinParams* params = Params().Zerocoin_Params();
 
@@ -398,7 +398,7 @@ void CzABETWallet::SeedToZABET(const uint512& seedZerocoin, CBigNum& bnValue, CB
     }
 }
 
-uint512 CzABETWallet::GetZerocoinSeed(uint32_t n)
+uint512 CzBTOKWallet::GetZerocoinSeed(uint32_t n)
 {
     CDataStream ss(SER_GETHASH, 0);
     ss << seedMaster << n;
@@ -406,14 +406,14 @@ uint512 CzABETWallet::GetZerocoinSeed(uint32_t n)
     return zerocoinSeed;
 }
 
-void CzABETWallet::UpdateCount()
+void CzBTOKWallet::UpdateCount()
 {
     nCountLastUsed++;
     CWalletDB walletdb(strWalletFile);
-    walletdb.WriteZABETCount(nCountLastUsed);
+    walletdb.WriteZBTOKCount(nCountLastUsed);
 }
 
-void CzABETWallet::GenerateDeterministicZABET(CoinDenomination denom, PrivateCoin& coin, CDeterministicMint& dMint, bool fGenerateOnly)
+void CzBTOKWallet::GenerateDeterministicZBTOK(CoinDenomination denom, PrivateCoin& coin, CDeterministicMint& dMint, bool fGenerateOnly)
 {
     GenerateMint(nCountLastUsed + 1, denom, coin, dMint);
     if (fGenerateOnly)
@@ -423,14 +423,14 @@ void CzABETWallet::GenerateDeterministicZABET(CoinDenomination denom, PrivateCoi
     //LogPrintf("%s : Generated new deterministic mint. Count=%d pubcoin=%s seed=%s\n", __func__, nCount, coin.getPublicCoin().getValue().GetHex().substr(0,6), seedZerocoin.GetHex().substr(0, 4));
 }
 
-void CzABETWallet::GenerateMint(const uint32_t& nCount, const CoinDenomination denom, PrivateCoin& coin, CDeterministicMint& dMint)
+void CzBTOKWallet::GenerateMint(const uint32_t& nCount, const CoinDenomination denom, PrivateCoin& coin, CDeterministicMint& dMint)
 {
     uint512 seedZerocoin = GetZerocoinSeed(nCount);
     CBigNum bnValue;
     CBigNum bnSerial;
     CBigNum bnRandomness;
     CKey key;
-    SeedToZABET(seedZerocoin, bnValue, bnSerial, bnRandomness, key);
+    SeedToZBTOK(seedZerocoin, bnValue, bnSerial, bnRandomness, key);
     coin = PrivateCoin(Params().Zerocoin_Params(), denom, bnSerial, bnRandomness);
     coin.setPrivKey(key.GetPrivKey());
     coin.setVersion(PrivateCoin::CURRENT_VERSION);
@@ -444,7 +444,7 @@ void CzABETWallet::GenerateMint(const uint32_t& nCount, const CoinDenomination d
     dMint.SetDenomination(denom);
 }
 
-bool CzABETWallet::RegenerateMint(const CDeterministicMint& dMint, CZerocoinMint& mint)
+bool CzBTOKWallet::RegenerateMint(const CDeterministicMint& dMint, CZerocoinMint& mint)
 {
     //Check that the seed is correct    todo:handling of incorrect, or multiple seeds
     uint256 hashSeed = Hash(seedMaster.begin(), seedMaster.end());

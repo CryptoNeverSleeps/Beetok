@@ -1,3 +1,3 @@
 cd ..
 cd src
-tar cvzf BEETOK-linux-Testnet.tar.gz altbetd beetok-cli
+tar cvzf BEETOK-linux-Testnet.tar.gz beetokd beetok-cli

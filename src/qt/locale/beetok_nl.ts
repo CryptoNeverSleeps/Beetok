@@ -64,11 +64,11 @@
     </message>
     <message>
         <source>These are your Beetok addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
-        <translation>Dit zijn uw Altbetadressen om betalingen mee te verzenden. Controleer altijd zowel het bedrag als het ontvangstadres voor het verzenden.</translation>
+        <translation>Dit zijn uw Beetokadressen om betalingen mee te verzenden. Controleer altijd zowel het bedrag als het ontvangstadres voor het verzenden.</translation>
     </message>
     <message>
         <source>These are your Beetok addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
-        <translation>Dit zijn uw Altbetadressen waarop betalingen kunnen worden ontvangen. Het wordt aangeraden om een nieuw ontvangstadres voor elke transactie te gebruiken.</translation>
+        <translation>Dit zijn uw Beetokadressen waarop betalingen kunnen worden ontvangen. Het wordt aangeraden om een nieuw ontvangstadres voor elke transactie te gebruiken.</translation>
     </message>
     <message>
         <source>&amp;Copy Address</source>
@@ -181,8 +181,8 @@
         <translation>Bevestig versleuteling van de portemonnee</translation>
     </message>
     <message>
-        <source>Beetok will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your ABETs from being stolen by malware infecting your computer.</source>
-        <translation>Beetok zal nu afsluiten om het versleutelingsproces te voltooien. Onthoud dat het versleutelen van uw portemonnee u niet volledig kan beschermen: Malware kan uw computer infecteren en uw ABETs stelen.</translation>
+        <source>Beetok will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your BTOKs from being stolen by malware infecting your computer.</source>
+        <translation>Beetok zal nu afsluiten om het versleutelingsproces te voltooien. Onthoud dat het versleutelen van uw portemonnee u niet volledig kan beschermen: Malware kan uw computer infecteren en uw BTOKs stelen.</translation>
     </message>
     <message>
         <source>Are you sure you wish to encrypt your wallet?</source>
@@ -3395,12 +3395,12 @@ Wees alsjeblieft geduldig...</translation>
         <translation>Munten automatisch geselecteerd</translation>
     </message>
     <message>
-        <source>If the custom fee is set to 1000 uABETs and the transaction is only 250 bytes, then &quot;per kilobyte&quot; only pays 250 uABETs in fee,&lt;br /&gt;while "at least" pays 1000 uABETs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
-        <translation>Als de aangepaste vergoeding is ingesteld op 1000 uABETs en de transactie is slechts 250 bytes, dan betaalt per kilobyte alleen 250 uABET's in vergoeding,&lt;br /&gt;terwijl &quot;minstens&quot; 1000 uABET's betaalt. Voor transacties die groter zijn dan een kilobyte, betalen beiden per kilobyte.</translation>
+        <source>If the custom fee is set to 1000 uBTOKs and the transaction is only 250 bytes, then &quot;per kilobyte&quot; only pays 250 uBTOKs in fee,&lt;br /&gt;while "at least" pays 1000 uBTOKs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
+        <translation>Als de aangepaste vergoeding is ingesteld op 1000 uBTOKs en de transactie is slechts 250 bytes, dan betaalt per kilobyte alleen 250 uBTOK's in vergoeding,&lt;br /&gt;terwijl &quot;minstens&quot; 1000 uBTOK's betaalt. Voor transacties die groter zijn dan een kilobyte, betalen beiden per kilobyte.</translation>
     </message>
     <message>
-        <source>If the custom fee is set to 1000 uABETs and the transaction is only 250 bytes, then "per kilobyte" only pays 250 uABETs in fee,&lt;br /&gt;while &quot;total at least&quot; pays 1000 uABETs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
-        <translation>Als de aangepaste vergoeding is ingesteld op 1000 uABETs en de transactie is slechts 250 bytes, dan betaalt per kilobyte alleen 250 uABET's in vergoeding,&lt;br /&gt;terwijl &quot;totaal minstens&quot; 1000 uABET's betaalt. Voor transacties die groter zijn dan een kilobyte, betalen beiden per kilobyte.</translation>
+        <source>If the custom fee is set to 1000 uBTOKs and the transaction is only 250 bytes, then "per kilobyte" only pays 250 uBTOKs in fee,&lt;br /&gt;while &quot;total at least&quot; pays 1000 uBTOKs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
+        <translation>Als de aangepaste vergoeding is ingesteld op 1000 uBTOKs en de transactie is slechts 250 bytes, dan betaalt per kilobyte alleen 250 uBTOK's in vergoeding,&lt;br /&gt;terwijl &quot;totaal minstens&quot; 1000 uBTOK's betaalt. Voor transacties die groter zijn dan een kilobyte, betalen beiden per kilobyte.</translation>
     </message>
     <message>
         <source>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks.&lt;br /&gt;But be aware that this can end up in a never confirming transaction once there is more demand for Beetok transactions than the network can process.</source>
@@ -4511,7 +4511,7 @@ Wees alsjeblieft geduldig...</translation>
     </message>
 </context>
 <context>
-    <name>ZAbetControlDialog</name>
+    <name>ZBtokControlDialog</name>
     <message>
         <source>Select zBtok to Spend</source>
         <translation>Selecteer zBtok om te spenderen</translation>
@@ -5830,10 +5830,10 @@ Wees alsjeblieft geduldig...</translation>
         <translation>SwiftTX vereist invoeren moet minstens 6 bevestigingen, u moet mogelijks een paar minuten wachten en opnieuw proberen.</translation>
     </message>
 	<message>
-        <source>To use altbetd, or the -server option to beetok-qt, you must set an rpcpassword in the configuration file:
+        <source>To use beetokd, or the -server option to beetok-qt, you must set an rpcpassword in the configuration file:
 %s
 It is recommended you use the following random password:
-rpcuser=altbetrpc
+rpcuser=beetokrpc
 rpcpassword=%s
 (you do not need to remember this password)
 The username and password MUST NOT be the same.
@@ -5841,10 +5841,10 @@ If the file does not exist, create it with owner-readable-only file permissions.
 It is also recommended to set alertnotify so you are notified of problems;
 for example: alertnotify=echo %%s | mail -s &quot;Beetok Alert&quot; admin@foo.com
 </source>
-        <translation>Om altbetd of de -server optie om beetok-qt te gebruiken, moet je een rpcpassword instellen in het configuratiebestand:
+        <translation>Om beetokd of de -server optie om beetok-qt te gebruiken, moet je een rpcpassword instellen in het configuratiebestand:
 %s
 Het is aan te raden het volgende willekeurige wachtwoord te gebruiken:
-rpcuser=altbetrpc
+rpcuser=beetokrpc
 rpcpassword=%s
 (je hoeft dit wachtwoord niet te onthouden)
 De gebruikersnaam en het wachtwoord MOETEN NIET hetzelfde zijn.
@@ -5975,7 +5975,7 @@ bijvoorbeeld: alertnotify = echo %%s | mail -s &quot;Beetok Alert&quot; admin@fo
     </message>
 </context>
 <context>
-    <name>zabetcontroldialog</name>
+    <name>zbtokcontroldialog</name>
     <message>
         <source>Select zBtok to Spend</source>
         <translation>Selecteer zBtok om te spenderen</translation>

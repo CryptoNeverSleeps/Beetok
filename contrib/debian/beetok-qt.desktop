@@ -7,6 +7,6 @@ Comment[tr]=Beetok, eşten eşe kriptografik sanal para birimi
 Exec=beetok-qt %u
 Terminal=false
 Type=Application
-Icon=altbet128
+Icon=beetok128
 MimeType=x-scheme-handler/beetok;
 Categories=Office;Finance;

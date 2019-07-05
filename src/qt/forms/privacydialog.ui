@@ -102,7 +102,7 @@
                       <item>
                        <layout class="QHBoxLayout" name="horizontalLayout_3">
                         <item>
-                         <widget class="QLabel" name="labelzABETActions">
+                         <widget class="QLabel" name="labelzBTOKActions">
                           <property name="font">
                            <font>
                             <weight>50</weight>
@@ -118,7 +118,7 @@
                          </widget>
                         </item>
                         <item>
-                         <widget class="QLabel" name="labelzABETSyncStatus">
+                         <widget class="QLabel" name="labelzBTOKSyncStatus">
                           <property name="toolTip">
                            <string>The displayed information may be out of date. Your wallet automatically synchronizes with the Beetok network after a connection is established, but this process has not completed yet.</string>
                           </property>
@@ -151,7 +151,7 @@
                       <item>
                        <layout class="QHBoxLayout" name="horizontalLayout_4">
                         <item>
-                         <widget class="QPushButton" name="pushButtonMintzABET">
+                         <widget class="QPushButton" name="pushButtonMintzBTOK">
                           <property name="minimumSize">
                            <size>
                             <width>131</width>
@@ -183,14 +183,14 @@
                          </widget>
                         </item>
                         <item>
-                         <widget class="QLabel" name="labelzABET_2">
+                         <widget class="QLabel" name="labelzBTOK_2">
                           <property name="text">
                            <string>zBTOK</string>
                           </property>
                          </widget>
                         </item>
                         <item>
-                         <widget class="QLabel" name="labelzABETAmountText">
+                         <widget class="QLabel" name="labelzBTOKAmountText">
                           <property name="toolTip">
                            <string>Available for minting are coins which are confirmed and not locked or Masternode collaterals.</string>
                           </property>
@@ -203,7 +203,7 @@
                          </widget>
                         </item>
                         <item>
-                         <widget class="QLabel" name="labelzABETAmountValue">
+                         <widget class="QLabel" name="labelzBTOKAmountValue">
                           <property name="font">
                            <font>
                             <weight>75</weight>
@@ -497,21 +497,21 @@
                          <number>0</number>
                         </property>
                         <item>
-                         <widget class="QPushButton" name="pushButtonzABETControl">
+                         <widget class="QPushButton" name="pushButtonzBTOKControl">
                           <property name="text">
                            <string>zBTOK Control</string>
                           </property>
                          </widget>
                         </item>
                         <item>
-                         <widget class="QLabel" name="labelzABETSelected">
+                         <widget class="QLabel" name="labelzBTOKSelected">
                           <property name="text">
                            <string>zBTOK Selected:</string>
                           </property>
                          </widget>
                         </item>
                         <item>
-                         <widget class="QLabel" name="labelzABETSelected_int">
+                         <widget class="QLabel" name="labelzBTOKSelected_int">
                           <property name="text">
                            <string>0</string>
                           </property>
@@ -565,7 +565,7 @@
                       <item>
                        <layout class="QHBoxLayout" name="horizontalLayout_6">
                         <item>
-                         <widget class="QPushButton" name="pushButtonSpendzABET">
+                         <widget class="QPushButton" name="pushButtonSpendzBTOK">
                           <property name="minimumSize">
                            <size>
                             <width>131</width>
@@ -581,7 +581,7 @@
                          </widget>
                         </item>
                         <item>
-                         <widget class="QLabel" name="labelzABETBalanceText">
+                         <widget class="QLabel" name="labelzBTOKBalanceText">
                           <property name="toolTip">
                            <string>Available (mature and spendable) zBTOK for spending</string>
                           </property>
@@ -811,7 +811,7 @@ zBTOK are mature when they have more than 20 confirmations AND more than 1 mint 
                            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                           </property>
                           <property name="buddy">
-                           <cstring>zABETpayAmount</cstring>
+                           <cstring>zBTOKpayAmount</cstring>
                           </property>
                          </widget>
                         </item>
@@ -821,10 +821,10 @@ zBTOK are mature when they have more than 20 confirmations AND more than 1 mint 
                            <number>0</number>
                           </property>
                           <item>
-                           <widget class="QLineEdit" name="zABETpayAmount"/>
+                           <widget class="QLineEdit" name="zBTOKpayAmount"/>
                           </item>
                           <item>
-                           <widget class="QLabel" name="labelzABET">
+                           <widget class="QLabel" name="labelzBTOK">
                             <property name="minimumSize">
                              <size>
                               <width>55</width>
@@ -919,7 +919,7 @@ zBTOK are mature when they have more than 20 confirmations AND more than 1 mint 
                       <item>
                        <layout class="QHBoxLayout" name="horizontalLayout_21">
                         <item>
-                         <widget class="QLabel" name="labelzABETStats">
+                         <widget class="QLabel" name="labelzBTOKStats">
                           <property name="font">
                            <font>
                             <weight>50</weight>

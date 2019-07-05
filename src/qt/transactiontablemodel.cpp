@@ -361,7 +361,7 @@ QString TransactionTableModel::formatTxType(const TransactionRecord* wtx) const
         return tr("Spent zBtok");
     case TransactionRecord::RecvFromZerocoinSpend:
         return tr("Received Btok from zBtok");
-    case TransactionRecord::ZerocoinSpend_Change_zAbet:
+    case TransactionRecord::ZerocoinSpend_Change_zBtok:
         return tr("Minted Change as zBtok from zBtok Spend");
     case TransactionRecord::ZerocoinSpend_FromMe:
         return tr("Converted zBtok to Btok");
@@ -419,7 +419,7 @@ QString TransactionTableModel::formatTxToAddress(const TransactionRecord* wtx, b
     case TransactionRecord::SendToOther:
         return QString::fromStdString(wtx->address) + watchAddress;
     case TransactionRecord::ZerocoinMint:
-    case TransactionRecord::ZerocoinSpend_Change_zAbet:
+    case TransactionRecord::ZerocoinSpend_Change_zBtok:
         return tr("zBtok Accumulator");
     case TransactionRecord::SendToSelf:
     default:

@@ -83,10 +83,10 @@ UniValue importprivkey(const UniValue& params, bool fHelp)
 {
     if (fHelp || params.size() < 1 || params.size() > 3)
         throw runtime_error(
-            "importprivkey \"altbetprivkey\" ( \"label\" rescan )\n"
+            "importprivkey \"beetokprivkey\" ( \"label\" rescan )\n"
             "\nAdds a private key (as returned by dumpprivkey) to your wallet.\n"
             "\nArguments:\n"
-            "1. \"altbetprivkey\"   (string, required) The private key (see dumpprivkey)\n"
+            "1. \"beetokprivkey\"   (string, required) The private key (see dumpprivkey)\n"
             "2. \"label\"            (string, optional, default=\"\") An optional label\n"
             "3. rescan               (boolean, optional, default=true) Rescan the wallet for transactions\n"
             "\nNote: This call can take minutes to complete if rescan is true.\n"
@@ -396,11 +396,11 @@ UniValue dumpprivkey(const UniValue& params, bool fHelp)
 {
 	if (fHelp || params.size() != 1)
 		throw runtime_error(
-			"dumpprivkey \"altbetaddress\"\n"
-			"\nReveals the private key corresponding to 'altbetaddress'.\n"
+			"dumpprivkey \"beetokaddress\"\n"
+			"\nReveals the private key corresponding to 'beetokaddress'.\n"
 			"Then the importprivkey can be used with this output\n"
 			"\nArguments:\n"
-			"1. \"altbetaddress\"   (string, required) The beetok address for the private key\n"
+			"1. \"beetokaddress\"   (string, required) The beetok address for the private key\n"
 			"\nResult:\n"
 			"\"key\"                (string) The private key\n"
 			"\nExamples:\n"
@@ -427,7 +427,7 @@ UniValue dumpprivkey(const UniValue& params, bool fHelp)
 	return CBitcoinSecret(vchSecret).ToString();
 }
 
-UniValue dumpprivkey_abet(const UniValue& params, bool fHelp)
+UniValue dumpprivkey_btok(const UniValue& params, bool fHelp)
 {
 	if (fHelp || params.empty() || params.size() > 2)
 		throw std::runtime_error(
@@ -596,7 +596,7 @@ UniValue dumpallprivatekeys(const UniValue& params, bool fHelp)
 	return NullUniValue;
 }
 
-UniValue dumpallprivatekeys_abet(const UniValue& params, bool fHelp)
+UniValue dumpallprivatekeys_btok(const UniValue& params, bool fHelp)
 {
 	if (fHelp || params.size() < 1 || params.size() > 2)
 		throw std::runtime_error(
@@ -633,10 +633,10 @@ UniValue bip38encrypt(const UniValue& params, bool fHelp)
 {
     if (fHelp || params.size() != 2)
         throw runtime_error(
-            "bip38encrypt \"altbetaddress\"\n"
-            "\nEncrypts a private key corresponding to 'altbetaddress'.\n"
+            "bip38encrypt \"beetokaddress\"\n"
+            "\nEncrypts a private key corresponding to 'beetokaddress'.\n"
             "\nArguments:\n"
-            "1. \"altbetaddress\"   (string, required) The beetok address for the private key (you must hold the key already)\n"
+            "1. \"beetokaddress\"   (string, required) The beetok address for the private key (you must hold the key already)\n"
             "2. \"passphrase\"   (string, required) The passphrase you want the private key to be encrypted with - Valid special chars: !#$%&'()*+,-./:;<=>?`{|}~ \n"
             "\nResult:\n"
             "\"key\"                (string) The encrypted private key\n"
@@ -673,7 +673,7 @@ UniValue bip38decrypt(const UniValue& params, bool fHelp)
 {
     if (fHelp || params.size() != 2)
         throw runtime_error(
-            "bip38decrypt \"altbetaddress\"\n"
+            "bip38decrypt \"beetokaddress\"\n"
             "\nDecrypts and then imports password protected private key.\n"
             "\nArguments:\n"
             "1. \"encryptedkey\"   (string, required) The encrypted private key\n"

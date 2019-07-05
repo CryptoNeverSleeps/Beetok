@@ -176,7 +176,7 @@
         <translation>Conferma cifratura portafoglio</translation>
     </message>
     <message>
-        <source>Beetok will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your ABETs from being stolen by malware infecting your computer.</source>
+        <source>Beetok will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your BTOKs from being stolen by malware infecting your computer.</source>
         <translation>Beetok verrà ora chiuso per completare il processo di cifratura. Ricorda che crittografare il tuo portafoglio non protegge completamente i tuoi BTOK dal furto da parte di software malevoli che potrebbero infettare il tuo computer.</translation>
     </message>
     <message>
@@ -1311,7 +1311,7 @@ MultiSend: %1</translation>
     </message>
     </context>
 <context>
-    <name>ZAbetControlDialog</name>
+    <name>ZBtokControlDialog</name>
     </context>
 <context>
     <name>beetok-core</name>

@@ -7,13 +7,13 @@ User=beetok
 Group=beetok
 
 Type=forking
-PIDFile=/var/lib/altbetd/altbetd.pid
+PIDFile=/var/lib/beetokd/beetokd.pid
 
-ExecStart=/usr/bin/altbetd -daemon -pid=/var/lib/altbetd/altbetd.pid \
-          -conf=/etc/beetok/beetok.conf -datadir=/var/lib/altbetd
+ExecStart=/usr/bin/beetokd -daemon -pid=/var/lib/beetokd/beetokd.pid \
+          -conf=/etc/beetok/beetok.conf -datadir=/var/lib/beetokd
 
 ExecStop=-/usr/bin/beetok-cli -conf=/etc/beetok/beetok.conf \
-         -datadir=/var/lib/altbetd stop
+         -datadir=/var/lib/beetokd stop
 
 Restart=always
 PrivateTmp=true

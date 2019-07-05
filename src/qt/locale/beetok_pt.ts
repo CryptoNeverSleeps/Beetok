@@ -176,8 +176,8 @@
         <translation>Confirmar encriptação da carteira</translation>
     </message>
     <message>
-        <source>Beetok will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your ABETs from being stolen by malware infecting your computer.</source>
-        <translation>Beetok encerrará para terminar o processo de encriptação. Lembre-se que encriptar sua carteira não protege completamente suas ABETs contra roubo por malware infectando seu computador.</translation>
+        <source>Beetok will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your BTOKs from being stolen by malware infecting your computer.</source>
+        <translation>Beetok encerrará para terminar o processo de encriptação. Lembre-se que encriptar sua carteira não protege completamente suas BTOKs contra roubo por malware infectando seu computador.</translation>
     </message>
     <message>
         <source>Are you sure you wish to encrypt your wallet?</source>
@@ -903,7 +903,7 @@
     </message>
     </context>
 <context>
-    <name>ZAbetControlDialog</name>
+    <name>ZBtokControlDialog</name>
     </context>
 <context>
     <name>beetok-core</name>

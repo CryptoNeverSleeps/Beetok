@@ -172,8 +172,8 @@
         <translation>Vahvista lompakon salaus</translation>
     </message>
     <message>
-        <source>Beetok will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your ABETs from being stolen by malware infecting your computer.</source>
-        <translation>Beetok sulkeutuu salausprosessin ajaksi. Muista, että lompakon salaus ei voi täysin suojella ABETien varkaudelta, jos tietokoneesi sisältää haittaohjelmia.</translation>
+        <source>Beetok will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your BTOKs from being stolen by malware infecting your computer.</source>
+        <translation>Beetok sulkeutuu salausprosessin ajaksi. Muista, että lompakon salaus ei voi täysin suojella BTOKien varkaudelta, jos tietokoneesi sisältää haittaohjelmia.</translation>
     </message>
     <message>
         <source>Are you sure you wish to encrypt your wallet?</source>
@@ -181,7 +181,7 @@
     </message>
     <message>
         <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR BTOK&lt;/b&gt;!</source>
-        <translation>Varoitus: Jos salaat lompakkosi ja unohdat salausavaimesi, &lt;b&gt;menetät kaikki ABETisi&lt;/b&gt;</translation>
+        <translation>Varoitus: Jos salaat lompakkosi ja unohdat salausavaimesi, &lt;b&gt;menetät kaikki BTOKisi&lt;/b&gt;</translation>
     </message>
     <message>
         <source>Wallet encrypted</source>
@@ -1148,7 +1148,7 @@ Please check the address and try again.</source>
     </message>
     <message>
         <source>This option is the quickest and will cost about ~0.025 BTOK to anonymize 10000 BTOK</source>
-        <translation>Tämä vaihtoehto on nopein ja maksaa noin ~0.025 ABET anonymoidaksesi 10000 Beetok</translation>
+        <translation>Tämä vaihtoehto on nopein ja maksaa noin ~0.025 BTOK anonymoidaksesi 10000 Beetok</translation>
     </message>
     <message>
         <source>This option is moderately fast and will cost about 0.05 BTOK to anonymize 10000 BTOK</source>
@@ -2534,7 +2534,7 @@ Please check the address and try again.</source>
     </message>
     </context>
 <context>
-    <name>ZAbetControlDialog</name>
+    <name>ZBtokControlDialog</name>
     <message>
         <source>0</source>
         <translation>0</translation>

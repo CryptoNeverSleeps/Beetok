@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ALTBET_MINTPOOL_H
-#define ALTBET_MINTPOOL_H
+#ifndef BEETOK_MINTPOOL_H
+#define BEETOK_MINTPOOL_H
 
 #include <map>
 #include <list>
@@ -50,5 +50,5 @@ public:
 };
 
 
-#endif //ALTBET_MINTPOOL_H
+#endif //BEETOK_MINTPOOL_H
 

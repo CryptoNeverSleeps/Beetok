@@ -72,7 +72,7 @@ using namespace std;
 
 #ifdef ENABLE_WALLET
 CWallet* pwalletMain = NULL;
-CzABETWallet* zwalletMain = NULL;
+CzBTOKWallet* zwalletMain = NULL;
 int nWalletBackups = 10;
 #endif
 volatile bool fFeeEstimatesInitialized = false;
@@ -351,7 +351,7 @@ void OnRPCPreCommand(const CRPCCommand& cmd)
 std::string HelpMessage(HelpMessageMode mode)
 {
 
-    // When adding new options to the categories, please keep and ensure alphabetical ordering.
+    // When adding new options to the categories, please keep and ensure alphbtokical ordering.
     string strUsage = HelpMessageGroup(_("Options:"));
     strUsage += HelpMessageOpt("-?", _("This help message"));
     strUsage += HelpMessageOpt("-version", _("Print version and exit"));
@@ -374,7 +374,7 @@ std::string HelpMessage(HelpMessageMode mode)
     strUsage += HelpMessageOpt("-maxorphantx=<n>", strprintf(_("Keep at most <n> unconnectable transactions in memory (default: %u)"), DEFAULT_MAX_ORPHAN_TRANSACTIONS));
     strUsage += HelpMessageOpt("-par=<n>", strprintf(_("Set the number of script verification threads (%u to %d, 0 = auto, <0 = leave that many cores free, default: %d)"), -(int)boost::thread::hardware_concurrency(), MAX_SCRIPTCHECK_THREADS, DEFAULT_SCRIPTCHECK_THREADS));
 #ifndef WIN32
-    strUsage += HelpMessageOpt("-pid=<file>", strprintf(_("Specify pid file (default: %s)"), "altbetd.pid"));
+    strUsage += HelpMessageOpt("-pid=<file>", strprintf(_("Specify pid file (default: %s)"), "beetokd.pid"));
 #endif
     strUsage += HelpMessageOpt("-reindex", _("Rebuild block chain index from current blk000??.dat files") + " " + _("on startup"));
     strUsage += HelpMessageOpt("-reindexaccumulators", _("Reindex the accumulator database") + " " + _("on startup"));
@@ -535,10 +535,10 @@ std::string HelpMessage(HelpMessageMode mode)
     strUsage += HelpMessageOpt("-enablezeromint=<n>", strprintf(_("Enable automatic Zerocoin minting (0-1, default: %u)"), 0));
     strUsage += HelpMessageOpt("-zeromintpercentage=<n>", strprintf(_("Percentage of automatically minted Zerocoin  (1-100, default: %u)"), 10));
     strUsage += HelpMessageOpt("-preferredDenom=<n>", strprintf(_("Preferred Denomination for automatically minted Zerocoin  (1/5/10/50/100/500/1000/5000), 0 for no preference. default: %u)"), 0));
-    strUsage += HelpMessageOpt("-backupzabet=<n>", strprintf(_("Enable automatic wallet backups triggered after each zBtok minting (0-1, default: %u)"), 1));
-    strUsage += HelpMessageOpt("-zabetbackuppath=<dir|file>", _("Specify custom backup path to add a copy of any automatic zBTOK backup. If set as dir, every backup generates a timestamped file. If set as file, will rewrite to that file every backup. If backuppath is set as well, 4 backups will happen"));
+    strUsage += HelpMessageOpt("-backupzbtok=<n>", strprintf(_("Enable automatic wallet backups triggered after each zBtok minting (0-1, default: %u)"), 1));
+    strUsage += HelpMessageOpt("-zbtokbackuppath=<dir|file>", _("Specify custom backup path to add a copy of any automatic zBTOK backup. If set as dir, every backup generates a timestamped file. If set as file, will rewrite to that file every backup. If backuppath is set as well, 4 backups will happen"));
 #endif
-//    strUsage += "  -anonymizealtbetamount=<n>     " + strprintf(_("Keep N BTOK anonymized (default: %u)"), 0) + "\n";
+//    strUsage += "  -anonymizebeetokamount=<n>     " + strprintf(_("Keep N BTOK anonymized (default: %u)"), 0) + "\n";
 //    strUsage += "  -liquidityprovider=<n>       " + strprintf(_("Provide liquidity to Obfuscation by infrequently mixing coins on a continual basis (0-100, default: %u, 1=very frequent, high fees, 100=very infrequent, low fees)"), 0) + "\n";
     strUsage += HelpMessageOpt("-reindexzerocoin=<n>", strprintf(_("Delete all zerocoin spends and mints that have been recorded to the blockchain database and reindex them (0-1, default: %u)"), 0));
     strUsage += HelpMessageGroup(_("SwiftX options:"));
@@ -1514,10 +1514,10 @@ bool AppInit2(boost::thread_group& threadGroup, CScheduler& scheduler)
                 // Recalculate money supply for blocks that are impacted by accounting issue after zerocoin activation
                 if (GetBoolArg("-reindexmoneysupply", false)) {
                     if (chainActive.Height() > Params().Zerocoin_StartHeight()) {
-                        RecalculateZABETMinted();
-                        RecalculateZABETSpent();
+                        RecalculateZBTOKMinted();
+                        RecalculateZBTOKSpent();
                     }
-                    RecalculateABETSupply(1);
+                    RecalculateBTOKSupply(1);
                 }
 
                 // Force recalculation of accumulators.
@@ -1682,7 +1682,7 @@ bool AppInit2(boost::thread_group& threadGroup, CScheduler& scheduler)
         LogPrintf("%s", strErrors.str());
         LogPrintf(" wallet      %15dms\n", GetTimeMillis() - nStart);
 
-        zwalletMain = new CzABETWallet(pwalletMain->strWalletFile);
+        zwalletMain = new CzBTOKWallet(pwalletMain->strWalletFile);
         pwalletMain->setZWallet(zwalletMain);
 
         RegisterValidationInterface(pwalletMain);
@@ -1731,8 +1731,8 @@ bool AppInit2(boost::thread_group& threadGroup, CScheduler& scheduler)
 
         uiInterface.InitMessage(_("Syncing zBTOK wallet..."));
 
-        bool fEnableZAbetBackups = GetBoolArg("-backupzabet", true);
-        pwalletMain->setZAbetAutoBackups(fEnableZAbetBackups);
+        bool fEnableZBtokBackups = GetBoolArg("-backupzbtok", true);
+        pwalletMain->setZBtokAutoBackups(fEnableZBtokBackups);
 
         g_address_type = ParseOutputType(GetArg("-addresstype", ""));
         if (g_address_type == OUTPUT_TYPE_NONE) {
@@ -1744,7 +1744,7 @@ bool AppInit2(boost::thread_group& threadGroup, CScheduler& scheduler)
             return InitError(strprintf(_("Unknown change type '%s'"), GetArg("-changetype", "")));
         }
 
-        pwalletMain->zabetTracker->Init();
+        pwalletMain->zbtokTracker->Init();
         zwalletMain->LoadMintPoolFromDB();
         zwalletMain->SyncWithChain();
     }  // (!fDisableWallet)
@@ -1908,7 +1908,7 @@ bool AppInit2(boost::thread_group& threadGroup, CScheduler& scheduler)
     }
 
 // XX42 Remove/refactor code below. Until then provide safe defaults
-    nAnonymizeAltbetAmount = 2;
+    nAnonymizeBeetokAmount = 2;
 
 //    nLiquidityProvider = GetArg("-liquidityprovider", 0); //0-100
 //    if (nLiquidityProvider != 0) {
@@ -1917,9 +1917,9 @@ bool AppInit2(boost::thread_group& threadGroup, CScheduler& scheduler)
 //        nZeromintPercentage = 99999;
 //    }
 //
-//    nAnonymizeAltbetAmount = GetArg("-anonymizealtbetamount", 0);
-//    if (nAnonymizeAltbetAmount > 999999) nAnonymizeAltbetAmount = 999999;
-//    if (nAnonymizeAltbetAmount < 2) nAnonymizeAltbetAmount = 2;
+//    nAnonymizeBeetokAmount = GetArg("-anonymizebeetokamount", 0);
+//    if (nAnonymizeBeetokAmount > 999999) nAnonymizeBeetokAmount = 999999;
+//    if (nAnonymizeBeetokAmount < 2) nAnonymizeBeetokAmount = 2;
 
     fEnableSwiftTX = GetBoolArg("-enableswifttx", fEnableSwiftTX);
     nSwiftTXDepth = GetArg("-swifttxdepth", nSwiftTXDepth);
@@ -1933,7 +1933,7 @@ bool AppInit2(boost::thread_group& threadGroup, CScheduler& scheduler)
 
     LogPrintf("fLiteMode %d\n", fLiteMode);
     LogPrintf("nSwiftTXDepth %d\n", nSwiftTXDepth);
-    LogPrintf("Anonymize Beetok Amount %d\n", nAnonymizeAltbetAmount);
+    LogPrintf("Anonymize Beetok Amount %d\n", nAnonymizeBeetokAmount);
     LogPrintf("Budget Mode %s\n", strBudgetMode.c_str());
 
     /* Denominations
@@ -1942,8 +1942,8 @@ bool AppInit2(boost::thread_group& threadGroup, CScheduler& scheduler)
        is convertable to another.
 
        For example:
-       1ABET+1000 == (.1ABET+100)*10
-       10ABET+10000 == (1ABET+1000)*10
+       1BTOK+1000 == (.1BTOK+100)*10
+       10BTOK+10000 == (1BTOK+1000)*10
     */
     obfuScationDenominations.push_back((10000 * COIN) + 10000000);
     obfuScationDenominations.push_back((1000 * COIN) + 1000000);

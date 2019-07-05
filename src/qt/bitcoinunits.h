@@ -59,8 +59,8 @@ public:
      */
     enum Unit {
         BTOK,
-        mABET,
-        uABET
+        mBTOK,
+        uBTOK
     };
 
     enum SeparatorStyle {

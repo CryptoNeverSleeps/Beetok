@@ -783,7 +783,7 @@
     </message>
     </context>
 <context>
-    <name>ZAbetControlDialog</name>
+    <name>ZBtokControlDialog</name>
     <message>
         <source>0</source>
         <translation>0</translation>

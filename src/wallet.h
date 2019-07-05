@@ -23,8 +23,8 @@
 #include "validationinterface.h"
 #include "wallet_ismine.h"
 #include "walletdb.h"
-#include "zabettracker.h"
-#include "zabetwallet.h"
+#include "zbtoktracker.h"
+#include "zbtokwallet.h"
 
 #include <algorithm>
 #include <map>
@@ -91,23 +91,23 @@ enum AvailableCoinsType {
 
 // Possible states for zBTOK send
 enum ZerocoinSpendStatus {
-    ZABET_SPEND_OKAY = 0,                            // No error
-    ZABET_SPEND_ERROR = 1,                           // Unspecified class of errors, more details are (hopefully) in the returning text
-    ZABET_WALLET_LOCKED = 2,                         // Wallet was locked
-    ZABET_COMMIT_FAILED = 3,                         // Commit failed, reset status
-    ZABET_ERASE_SPENDS_FAILED = 4,                   // Erasing spends during reset failed
-    ZABET_ERASE_NEW_MINTS_FAILED = 5,                // Erasing new mints during reset failed
-    ZABET_TRX_FUNDS_PROBLEMS = 6,                    // Everything related to available funds
-    ZABET_TRX_CREATE = 7,                            // Everything related to create the transaction
-    ZABET_TRX_CHANGE = 8,                            // Everything related to transaction change
-    ZABET_TXMINT_GENERAL = 9,                        // General errors in MintToTxIn
-    ZABET_INVALID_COIN = 10,                         // Selected mint coin is not valid
-    ZABET_FAILED_ACCUMULATOR_INITIALIZATION = 11,    // Failed to initialize witness
-    ZABET_INVALID_WITNESS = 12,                      // Spend coin transaction did not verify
-    ZABET_BAD_SERIALIZATION = 13,                    // Transaction verification failed
-    ZABET_SPENT_USED_ZABET = 14,                      // Coin has already been spend
-    ZABET_TX_TOO_LARGE = 15,                         // The transaction is larger than the max tx size
-    ZABET_SPEND_V1_SEC_LEVEL
+    ZBTOK_SPEND_OKAY = 0,                            // No error
+    ZBTOK_SPEND_ERROR = 1,                           // Unspecified class of errors, more details are (hopefully) in the returning text
+    ZBTOK_WALLET_LOCKED = 2,                         // Wallet was locked
+    ZBTOK_COMMIT_FAILED = 3,                         // Commit failed, reset status
+    ZBTOK_ERASE_SPENDS_FAILED = 4,                   // Erasing spends during reset failed
+    ZBTOK_ERASE_NEW_MINTS_FAILED = 5,                // Erasing new mints during reset failed
+    ZBTOK_TRX_FUNDS_PROBLEMS = 6,                    // Everything related to available funds
+    ZBTOK_TRX_CREATE = 7,                            // Everything related to create the transaction
+    ZBTOK_TRX_CHANGE = 8,                            // Everything related to transaction change
+    ZBTOK_TXMINT_GENERAL = 9,                        // General errors in MintToTxIn
+    ZBTOK_INVALID_COIN = 10,                         // Selected mint coin is not valid
+    ZBTOK_FAILED_ACCUMULATOR_INITIALIZATION = 11,    // Failed to initialize witness
+    ZBTOK_INVALID_WITNESS = 12,                      // Spend coin transaction did not verify
+    ZBTOK_BAD_SERIALIZATION = 13,                    // Transaction verification failed
+    ZBTOK_SPENT_USED_ZBTOK = 14,                      // Coin has already been spend
+    ZBTOK_TX_TOO_LARGE = 15,                         // The transaction is larger than the max tx size
+    ZBTOK_SPEND_V1_SEC_LEVEL
 };
 
 enum OutputType : int
@@ -226,15 +226,15 @@ public:
     std::string ResetMintZerocoin();
     std::string ResetSpentZerocoin();
     void ReconsiderZerocoins(std::list<CZerocoinMint>& listMintsRestored, std::list<CDeterministicMint>& listDMintsRestored);
-    void ZAbetBackupWallet();
+    void ZBtokBackupWallet();
     bool GetZerocoinKey(const CBigNum& bnSerial, CKey& key);
-    bool CreateZABETOutput(libzerocoin::CoinDenomination denomination, CTxOut& outMint, CDeterministicMint& dMint);
+    bool CreateZBTOKOutput(libzerocoin::CoinDenomination denomination, CTxOut& outMint, CDeterministicMint& dMint);
     bool GetMint(const uint256& hashSerial, CZerocoinMint& mint);
     bool GetMintFromStakeHash(const uint256& hashStake, CZerocoinMint& mint);
     bool DatabaseMint(CDeterministicMint& dMint);
     bool SetMintUnspent(const CBigNum& bnSerial);
     bool UpdateMint(const CBigNum& bnValue, const int& nHeight, const uint256& txid, const libzerocoin::CoinDenomination& denom);
-    string GetUniqueWalletBackupName(bool fzabetAuto) const;
+    string GetUniqueWalletBackupName(bool fzbtokAuto) const;
 
     /** Zerocin entry changed.
     * @note called with lock cs_wallet held.
@@ -249,13 +249,13 @@ public:
      */
     mutable CCriticalSection cs_wallet;
 
-    CzABETWallet* zwalletMain;
+    CzBTOKWallet* zwalletMain;
 
     bool fFileBacked;
     bool fWalletUnlockAnonymizeOnly;
     std::string strWalletFile;
     bool fBackupMints;
-    std::unique_ptr<CzABETTracker> zabetTracker;
+    std::unique_ptr<CzBTOKTracker> zbtokTracker;
 
     std::set<int64_t> setKeyPool;
     std::map<CKeyID, CKeyMetadata> mapKeyMetadata;
@@ -340,13 +340,13 @@ public:
         return nZeromintPercentage;
     }
 
-    void setZWallet(CzABETWallet* zwallet)
+    void setZWallet(CzBTOKWallet* zwallet)
     {
         zwalletMain = zwallet;
-        zabetTracker = std::unique_ptr<CzABETTracker>(new CzABETTracker(strWalletFile));
+        zbtokTracker = std::unique_ptr<CzBTOKTracker>(new CzBTOKTracker(strWalletFile));
     }
 
-    CzABETWallet* getZWallet() { return zwalletMain; }
+    CzBTOKWallet* getZWallet() { return zwalletMain; }
 
 
     bool isZeromintEnabled()
@@ -354,7 +354,7 @@ public:
         return fEnableZeromint;
     }
 
-    void setZAbetAutoBackups(bool fEnabled)
+    void setZBtokAutoBackups(bool fEnabled)
     {
         fBackupMints = fEnabled;
     }

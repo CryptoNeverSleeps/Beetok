@@ -22,7 +22,7 @@ packages:
 - "ca-certificates"
 - "python"
 remotes:
-- "url": "https://github.com/altbetproject/beetok.git"
+- "url": "https://github.com/beetokproject/beetok.git"
   "dir": "beetok"
 files: []
 script: |

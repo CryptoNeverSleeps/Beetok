@@ -565,14 +565,14 @@ FORCE_LOCAL_INCLUDES   = NO
 INLINE_INFO            = YES
 
 # If the SORT_MEMBER_DOCS tag is set to YES then doxygen will sort the
-# (detailed) documentation of file and class members alphabetically by member
+# (detailed) documentation of file and class members alphbtokically by member
 # name. If set to NO, the members will appear in declaration order.
 # The default value is: YES.
 
 SORT_MEMBER_DOCS       = YES
 
 # If the SORT_BRIEF_DOCS tag is set to YES then doxygen will sort the brief
-# descriptions of file, namespace and class members alphabetically by member
+# descriptions of file, namespace and class members alphbtokically by member
 # name. If set to NO, the members will appear in declaration order. Note that
 # this will also influence the order of the classes in the class list.
 # The default value is: NO.
@@ -592,7 +592,7 @@ SORT_BRIEF_DOCS        = NO
 SORT_MEMBERS_CTORS_1ST = NO
 
 # If the SORT_GROUP_NAMES tag is set to YES then doxygen will sort the hierarchy
-# of group names into alphabetical order. If set to NO the group names will
+# of group names into alphbtokical order. If set to NO the group names will
 # appear in their defined order.
 # The default value is: NO.
 
@@ -602,7 +602,7 @@ SORT_GROUP_NAMES       = NO
 # fully-qualified names, including namespaces. If set to NO, the class list will
 # be sorted only by class name, not including the namespace part.
 # Note: This option is not very useful if HIDE_SCOPE_NAMES is set to YES.
-# Note: This option applies only to the class list, not to the alphabetical
+# Note: This option applies only to the class list, not to the alphbtokical
 # list.
 # The default value is: NO.
 
@@ -1062,28 +1062,28 @@ USE_HTAGS              = NO
 VERBATIM_HEADERS       = YES
 
 #---------------------------------------------------------------------------
-# configuration options related to the alphabetical class index
+# configuration options related to the alphbtokical class index
 #---------------------------------------------------------------------------
 
-# If the ALPHABETICAL_INDEX tag is set to YES, an alphabetical index of all
+# If the ALPHBTOKICAL_INDEX tag is set to YES, an alphbtokical index of all
 # compounds will be generated. Enable this if the project contains a lot of
 # classes, structs, unions or interfaces.
 # The default value is: YES.
 
-ALPHABETICAL_INDEX     = YES
+ALPHBTOKICAL_INDEX     = YES
 
 # The COLS_IN_ALPHA_INDEX tag can be used to specify the number of columns in
-# which the alphabetical index list will be split.
+# which the alphbtokical index list will be split.
 # Minimum value: 1, maximum value: 20, default value: 5.
-# This tag requires that the tag ALPHABETICAL_INDEX is set to YES.
+# This tag requires that the tag ALPHBTOKICAL_INDEX is set to YES.
 
 COLS_IN_ALPHA_INDEX    = 5
 
 # In case all classes in a project start with a common prefix, all classes will
-# be put under the same header in the alphabetical index. The IGNORE_PREFIX tag
+# be put under the same header in the alphbtokical index. The IGNORE_PREFIX tag
 # can be used to specify a prefix (or a list of prefixes) that should be ignored
 # while generating the index headers.
-# This tag requires that the tag ALPHABETICAL_INDEX is set to YES.
+# This tag requires that the tag ALPHBTOKICAL_INDEX is set to YES.
 
 IGNORE_PREFIX          =
 

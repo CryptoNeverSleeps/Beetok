@@ -1082,7 +1082,7 @@
                       <item>
                        <widget class="QRadioButton" name="radioCustomPerKilobyte">
                         <property name="toolTip">
-                         <string>If the custom fee is set to 1000 uABETs and the transaction is only 250 bytes, then &quot;per kilobyte&quot; only pays 250 uABETs in fee,&lt;br /&gt;while &quot;at least&quot; pays 1000 uABETs. For transactions bigger than a kilobyte both pay by kilobyte.</string>
+                         <string>If the custom fee is set to 1000 uBTOKs and the transaction is only 250 bytes, then &quot;per kilobyte&quot; only pays 250 uBTOKs in fee,&lt;br /&gt;while &quot;at least&quot; pays 1000 uBTOKs. For transactions bigger than a kilobyte both pay by kilobyte.</string>
                         </property>
                         <property name="text">
                          <string>per kilobyte</string>
@@ -1098,7 +1098,7 @@
                       <item>
                        <widget class="QRadioButton" name="radioCustomAtLeast">
                         <property name="toolTip">
-                         <string>If the custom fee is set to 1000 uABETs and the transaction is only 250 bytes, then &quot;per kilobyte&quot; only pays 250 uABETs in fee,&lt;br /&gt;while &quot;total at least&quot; pays 1000 uABETs. For transactions bigger than a kilobyte both pay by kilobyte.</string>
+                         <string>If the custom fee is set to 1000 uBTOKs and the transaction is only 250 bytes, then &quot;per kilobyte&quot; only pays 250 uBTOKs in fee,&lt;br /&gt;while &quot;total at least&quot; pays 1000 uBTOKs. For transactions bigger than a kilobyte both pay by kilobyte.</string>
                         </property>
                         <property name="text">
                          <string>total at least</string>
@@ -1575,7 +1575,7 @@
               <number>3</number>
              </property>
              <item>
-              <widget class="QCheckBox" name="checkzABET">
+              <widget class="QCheckBox" name="checkzBTOK">
                <property name="enabled">
                 <bool>false</bool>
                </property>

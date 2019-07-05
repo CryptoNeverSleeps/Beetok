@@ -262,7 +262,7 @@ bool CCryptoKeyStore::Unlock(const CKeyingMaterial& vMasterKeyIn)
             }
             pwalletMain->zwalletMain->SetMasterSeed(nSeed, false);
         } else {
-            // First time this wallet has been unlocked with dzABET
+            // First time this wallet has been unlocked with dzBTOK
             // Borrow random generator from the key class so that we don't have to worry about randomness
             CKey key;
             key.MakeNewKey(true);
@@ -388,7 +388,7 @@ bool CCryptoKeyStore::AddDeterministicSeed(const uint256& seed)
             //attempt encrypt
             if (EncryptSecret(vMasterKey, kmSeed, hashSeed, vchSeedSecret)) {
                 //write to wallet with hashSeed as unique key
-                if (db.WriteZABETSeed(hashSeed, vchSeedSecret)) {
+                if (db.WriteZBTOKSeed(hashSeed, vchSeedSecret)) {
                     return true;
                 }
             }
@@ -396,12 +396,12 @@ bool CCryptoKeyStore::AddDeterministicSeed(const uint256& seed)
         }
         strErr = "save since wallet is locked";
     } else { //wallet not encrypted
-        if (db.WriteZABETSeed(hashSeed, ToByteVector(seed))) {
+        if (db.WriteZBTOKSeed(hashSeed, ToByteVector(seed))) {
             return true;
         }
-        strErr = "save zabetseed to wallet";
+        strErr = "save zbtokseed to wallet";
     }
-                //the use case for this is no password set seed, mint dzABET,
+                //the use case for this is no password set seed, mint dzBTOK,
 
     return error("s%: Failed to %s\n", __func__, strErr);
 }
@@ -416,7 +416,7 @@ bool CCryptoKeyStore::GetDeterministicSeed(const uint256& hashSeed, uint256& see
 
             vector<unsigned char> vchCryptedSeed;
             //read encrypted seed
-            if (db.ReadZABETSeed(hashSeed, vchCryptedSeed)) {
+            if (db.ReadZBTOKSeed(hashSeed, vchCryptedSeed)) {
                 uint256 seedRetrieved = uint256(ReverseEndianString(HexStr(vchCryptedSeed)));
                 //this checks if the hash of the seed we just read matches the hash given, meaning it is not encrypted
                 //the use case for this is when not crypted, seed is set, then password set, the seed not yet crypted in memory
@@ -437,7 +437,7 @@ bool CCryptoKeyStore::GetDeterministicSeed(const uint256& hashSeed, uint256& see
     } else {
         vector<unsigned char> vchSeed;
         // wallet not crypted
-        if (db.ReadZABETSeed(hashSeed, vchSeed)) {
+        if (db.ReadZBTOKSeed(hashSeed, vchSeed)) {
             seedOut = uint256(ReverseEndianString(HexStr(vchSeed)));
             return true;
         }

@@ -221,7 +221,7 @@
     </message>
     <message>
         <location line="+9"/>
-        <source>Beetok will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your ABETs from being stolen by malware infecting your computer.</source>
+        <source>Beetok will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your BTOKs from being stolen by malware infecting your computer.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2749,7 +2749,7 @@ If AutoMint is enabled this percentage will settle around the configured AutoMin
     <message>
         <location line="+7"/>
         <location line="+10"/>
-        <source>Unlocked ABETs. These can be used for zBTOK minting.</source>
+        <source>Unlocked BTOKs. These can be used for zBTOK minting.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -4534,12 +4534,12 @@ Either mint higher denominations (so fewer inputs are needed) or reduce the amou
     </message>
     <message>
         <location line="+772"/>
-        <source>If the custom fee is set to 1000 uABETs and the transaction is only 250 bytes, then &quot;per kilobyte&quot; only pays 250 uABETs in fee,&lt;br /&gt;while &quot;at least&quot; pays 1000 uABETs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
+        <source>If the custom fee is set to 1000 uBTOKs and the transaction is only 250 bytes, then &quot;per kilobyte&quot; only pays 250 uBTOKs in fee,&lt;br /&gt;while &quot;at least&quot; pays 1000 uBTOKs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+16"/>
-        <source>If the custom fee is set to 1000 uABETs and the transaction is only 250 bytes, then &quot;per kilobyte&quot; only pays 250 uABETs in fee,&lt;br /&gt;while &quot;total at least&quot; pays 1000 uABETs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
+        <source>If the custom fee is set to 1000 uBTOKs and the transaction is only 250 bytes, then &quot;per kilobyte&quot; only pays 250 uBTOKs in fee,&lt;br /&gt;while &quot;total at least&quot; pays 1000 uBTOKs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -5940,9 +5940,9 @@ Either mint higher denominations (so fewer inputs are needed) or reduce the amou
     </message>
 </context>
 <context>
-    <name>ZAbetControlDialog</name>
+    <name>ZBtokControlDialog</name>
     <message>
-        <location filename="../forms/zabetcontroldialog.ui" line="+20"/>
+        <location filename="../forms/zbtokcontroldialog.ui" line="+20"/>
         <source>Select zBtok to Spend</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5976,7 +5976,7 @@ Either mint higher denominations (so fewer inputs are needed) or reduce the amou
 <context>
     <name>beetok-core</name>
     <message>
-        <location filename="../altbetstrings.cpp" line="+15"/>
+        <location filename="../beetokstrings.cpp" line="+15"/>
         <source>(1 = keep tx meta data e.g. account owner and payment request information, 2 = drop tx meta data)</source>
         <translation type="unfinished">(1 = keep tx meta data e.g. account owner and payment request information, 2 = drop tx meta data)</translation>
     </message>
@@ -6207,10 +6207,10 @@ Either mint higher denominations (so fewer inputs are needed) or reduce the amou
     </message>
     <message>
         <location line="+4"/>
-        <source>To use altbetd, or the -server option to beetok-qt, you must set an rpcpassword in the configuration file:
+        <source>To use beetokd, or the -server option to beetok-qt, you must set an rpcpassword in the configuration file:
 %s
 It is recommended you use the following random password:
-rpcuser=altbetrpc
+rpcuser=beetokrpc
 rpcpassword=%s
 (you do not need to remember this password)
 The username and password MUST NOT be the same.

@@ -135,9 +135,9 @@ If your remote server is not running, start your remote daemon as you normally w
 
 I usually confirm that remote is on the correct block by issuing:
 
-```altbetd getinfo```
+```beetokd getinfo```
 
-And compare with the official explorer at http://altbetexplorer.coin-server.com <or> dnet.presstab.pw
+And compare with the official explorer at http://beetokexplorer.coin-server.com <or> dnet.presstab.pw
 
 ### Local
 

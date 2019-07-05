@@ -530,7 +530,7 @@ int main(int argc, char* argv[])
     QTextCodec::setCodecForCStrings(QTextCodec::codecForTr());
 #endif
 
-    Q_INIT_RESOURCE(altbet_locale);
+    Q_INIT_RESOURCE(beetok_locale);
     Q_INIT_RESOURCE(beetok);
 
     BitcoinApplication app(argc, argv);

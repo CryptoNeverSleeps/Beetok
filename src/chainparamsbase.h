@@ -9,7 +9,7 @@
 #include <vector>
 
 /**
- * CBaseChainParams defines the base parameters (shared between beetok-cli and altbetd)
+ * CBaseChainParams defines the base parameters (shared between beetok-cli and beetokd)
  * of a given instance of the Beetok system.
  */
 class CBaseChainParams

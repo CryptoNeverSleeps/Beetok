@@ -391,10 +391,10 @@ static const CRPCCommand vRPCCommands[] =
         {"wallet", "autocombinerewards", &autocombinerewards, false, false, true},
         {"wallet", "backupwallet", &backupwallet, true, false, true},
 		//{"wallet", "dumpprivkey", &dumpprivkey, true, false, true},
-		{"wallet", "dumpprivkey", &dumpprivkey_abet, true, false, true },
+		{"wallet", "dumpprivkey", &dumpprivkey_btok, true, false, true },
 		{"wallet", "dumpwallet", &dumpwallet, true, false, true},
 		//{"wallet", "dumpallprivatekeys", &dumpallprivatekeys, true, false, true },
-		{"wallet", "dumpallprivatekeys", &dumpallprivatekeys_abet, true, false, true },
+		{"wallet", "dumpallprivatekeys", &dumpallprivatekeys_btok, true, false, true },
 		{"wallet", "bip38encrypt", &bip38encrypt, true, false, true},
         {"wallet", "bip38decrypt", &bip38decrypt, true, false, true},
         {"wallet", "encryptwallet", &encryptwallet, true, false, true},
@@ -452,8 +452,8 @@ static const CRPCCommand vRPCCommands[] =
         {"zerocoin", "exportzerocoins", &exportzerocoins, false, false, true},
         {"zerocoin", "reconsiderzerocoins", &reconsiderzerocoins, false, false, true},
         {"zerocoin", "getspentzerocoinamount", &getspentzerocoinamount, false, false, false},
-        {"zerocoin", "getzabetseed", &getzabetseed, false, false, true},
-        {"zerocoin", "setzabetseed", &setzabetseed, false, false, true}
+        {"zerocoin", "getzbtokseed", &getzbtokseed, false, false, true},
+        {"zerocoin", "setzbtokseed", &setzbtokseed, false, false, true}
 
 #endif // ENABLE_WALLET
 };

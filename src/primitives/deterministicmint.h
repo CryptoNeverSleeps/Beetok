@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ALTBET_DETERMINISTICMINT_H
-#define ALTBET_DETERMINISTICMINT_H
+#ifndef BEETOK_DETERMINISTICMINT_H
+#define BEETOK_DETERMINISTICMINT_H
 
 #include "libzerocoin/Denominations.h"
 #include "uint256.h"
@@ -64,4 +64,4 @@ public:
     };
 };
 
-#endif //ALTBET_DETERMINISTICMINT_H
+#endif //BEETOK_DETERMINISTICMINT_H

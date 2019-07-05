@@ -1,31 +1,31 @@
 #!/bin/bash
 #
-#  altbetd The Beetok core server.
+#  beetokd The Beetok core server.
 #
 #
 # chkconfig: 345 80 20
-# description: altbetd
-# processname: altbetd
+# description: beetokd
+# processname: beetokd
 #
 
 # Source function library.
 . /etc/init.d/functions
 
-# you can override defaults in /etc/sysconfig/altbetd, see below
-if [ -f /etc/sysconfig/altbetd ]; then
-        . /etc/sysconfig/altbetd
+# you can override defaults in /etc/sysconfig/beetokd, see below
+if [ -f /etc/sysconfig/beetokd ]; then
+        . /etc/sysconfig/beetokd
 fi
 
 RETVAL=0
 
-prog=altbetd
-# you can override the lockfile via BITCOIND_LOCKFILE in /etc/sysconfig/altbetd
-lockfile=${BITCOIND_LOCKFILE-/var/lock/subsys/altbetd}
+prog=beetokd
+# you can override the lockfile via BITCOIND_LOCKFILE in /etc/sysconfig/beetokd
+lockfile=${BITCOIND_LOCKFILE-/var/lock/subsys/beetokd}
 
-# altbetd defaults to /usr/bin/altbetd, override with BITCOIND_BIN
-bitcoind=${BITCOIND_BIN-/usr/bin/altbetd}
+# beetokd defaults to /usr/bin/beetokd, override with BITCOIND_BIN
+bitcoind=${BITCOIND_BIN-/usr/bin/beetokd}
 
-# altbetd opts default to -disablewallet, override with BITCOIND_OPTS
+# beetokd opts default to -disablewallet, override with BITCOIND_OPTS
 bitcoind_opts=${BITCOIND_OPTS}
 
 start() {

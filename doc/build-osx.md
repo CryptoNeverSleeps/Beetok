@@ -1,6 +1,6 @@
 Mac OS X Build Instructions and Notes
 ====================================
-This guide will show you how to build altbetd (headless client) for OSX.
+This guide will show you how to build beetokd (headless client) for OSX.
 
 Notes
 -----
@@ -42,18 +42,18 @@ Instructions: Homebrew
         
         Note: On OSX versions lower than High Sierra, zeromq should be replaced with libzmq
 
-### Building `altbetd`
+### Building `beetokd`
 
 1. Clone the github tree to get the source code and go into the directory.
 
-        git clone https://github.com/altbetproject/Beetok.git
+        git clone https://github.com/beetokproject/Beetok.git
         cd Beetok
 
 2.  Make the Homebrew OpenSSL headers visible to the configure script  (do ```brew info openssl``` to find out why this is necessary, or if you use Homebrew with installation folders different from the default).
          export LDFLAGS+=-L/usr/local/opt/openssl/lib
         export CPPFLAGS+=-I/usr/local/opt/openssl/include
         
-3.  Build altbetd:
+3.  Build beetokd:
         
         chmod +x share/genbuild.sh autogen.sh 
         ./autogen.sh
@@ -66,7 +66,7 @@ Instructions: Homebrew
 
         make check
 
-5.  (Optional) You can also install altbetd to your path:
+5.  (Optional) You can also install beetokd to your path:
 
         make install
 
@@ -88,11 +88,11 @@ Download Qt Creator from http://www.qt.io/download/. Download the "community edi
 
 Creating a release build
 ------------------------
-You can ignore this section if you are building `altbetd` for your own use.
+You can ignore this section if you are building `beetokd` for your own use.
 
-altbetd/beetok-cli binaries are not included in the beetok-Qt.app bundle.
+beetokd/beetok-cli binaries are not included in the beetok-Qt.app bundle.
 
-If you are building `altbetd` or `beetok-qt` for others, your build machine should be set up
+If you are building `beetokd` or `beetok-qt` for others, your build machine should be set up
 as follows for maximum compatibility:
 
 All dependencies should be compiled with these flags:
@@ -107,13 +107,13 @@ bundle is packaged and signed to create the .dmg disk image that is distributed.
 Running
 -------
 
-It's now available at `./altbetd`, provided that you are still in the `src`
+It's now available at `./beetokd`, provided that you are still in the `src`
 directory. We have to first create the RPC configuration file, though.
 
-Run `./altbetd` to get the filename where it should be put, or just try these
+Run `./beetokd` to get the filename where it should be put, or just try these
 commands:
 
-    echo -e "rpcuser=altbetrpc\nrpcpassword=$(xxd -l 16 -p /dev/urandom)" > "/Users/${USER}/Library/Application Support/Beetok/beetok.conf"
+    echo -e "rpcuser=beetokrpc\nrpcpassword=$(xxd -l 16 -p /dev/urandom)" > "/Users/${USER}/Library/Application Support/Beetok/beetok.conf"
     chmod 600 "/Users/${USER}/Library/Application Support/Beetok/beetok.conf"
 
 The next time you run it, it will start downloading the blockchain, but it won't
@@ -125,7 +125,7 @@ you can monitor its process by looking at the debug.log file, like this:
 Other commands:
 -------
 
-    ./altbetd -daemon # to start the beetok daemon.
+    ./beetokd -daemon # to start the beetok daemon.
     ./beetok-cli --help  # for a list of command-line options.
     ./beetok-cli help    # When the daemon is running, to get a list of RPC commands
     
@@ -180,7 +180,7 @@ Next, switch into your Downloads folder:
 
 The next step is to download the current version of the wallet from Github and go into that directory:
 
-```git clone https://github.com/altbetproject/beetok.git```
+```git clone https://github.com/beetokproject/beetok.git```
 ```cd Beetok```
 
 Now set some configuration flags:

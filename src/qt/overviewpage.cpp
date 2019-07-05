@@ -208,16 +208,16 @@ void OverviewPage::setBalance(const CAmount& balance, const CAmount& unconfirmed
 
     // BTOK Balance
     CAmount nTotalBalance = balance + unconfirmedBalance;
-    CAmount abetAvailableBalance = balance - immatureBalance - nLockedBalance;
+    CAmount btokAvailableBalance = balance - immatureBalance - nLockedBalance;
     CAmount nTotalWatchBalance = watchOnlyBalance + watchUnconfBalance + watchImmatureBalance;    
     CAmount nUnlockedBalance = nTotalBalance - nLockedBalance;
 
     // Combined balances
-	CAmount availableTotalBalance = abetAvailableBalance;
+	CAmount availableTotalBalance = btokAvailableBalance;
 	CAmount sumTotalBalance = nTotalBalance;
 
     // BTOK labels
-    ui->labelBalance->setText(BitcoinUnits::floorHtmlWithUnitComma(nDisplayUnit, abetAvailableBalance, false, BitcoinUnits::separatorAlways));
+    ui->labelBalance->setText(BitcoinUnits::floorHtmlWithUnitComma(nDisplayUnit, btokAvailableBalance, false, BitcoinUnits::separatorAlways));
     ui->labelUnconfirmed->setText(BitcoinUnits::floorHtmlWithUnitComma(nDisplayUnit, unconfirmedBalance, false, BitcoinUnits::separatorAlways));
     ui->labelImmature->setText(BitcoinUnits::floorHtmlWithUnitComma(nDisplayUnit, immatureBalance, false, BitcoinUnits::separatorAlways));
     ui->labelLockedBalance->setText(BitcoinUnits::floorHtmlWithUnitComma(nDisplayUnit, nLockedBalance, false, BitcoinUnits::separatorAlways));
@@ -251,31 +251,31 @@ void OverviewPage::setBalance(const CAmount& balance, const CAmount& unconfirmed
     bool settingShowAllBalances = !settings.value("fHideZeroBalances").toBool();
     bool showSumAvailable = settingShowAllBalances || sumTotalBalance != availableTotalBalance;
     // ui->labelBalanceTextz->setVisible(showSumAvailable);
-    bool showABETAvailable = settingShowAllBalances || abetAvailableBalance != nTotalBalance;
-    bool showWatchOnlyABETAvailable = watchOnlyBalance != nTotalWatchBalance;
-    bool showABETPending = settingShowAllBalances || unconfirmedBalance != 0;
-    bool showWatchOnlyABETPending = watchUnconfBalance != 0;
-    bool showABETLocked = settingShowAllBalances || nLockedBalance != 0;
-    bool showWatchOnlyABETLocked = nWatchOnlyLockedBalance != 0;
+    bool showBTOKAvailable = settingShowAllBalances || btokAvailableBalance != nTotalBalance;
+    bool showWatchOnlyBTOKAvailable = watchOnlyBalance != nTotalWatchBalance;
+    bool showBTOKPending = settingShowAllBalances || unconfirmedBalance != 0;
+    bool showWatchOnlyBTOKPending = watchUnconfBalance != 0;
+    bool showBTOKLocked = settingShowAllBalances || nLockedBalance != 0;
+    bool showWatchOnlyBTOKLocked = nWatchOnlyLockedBalance != 0;
     bool showImmature = settingShowAllBalances || immatureBalance != 0;
     bool showWatchOnlyImmature = watchImmatureBalance != 0;
     bool showWatchOnly = nTotalWatchBalance != 0;
 
-    ui->labelBalance->setVisible(showABETAvailable || showWatchOnlyABETAvailable);
-    ui->labelBalanceText->setVisible(showABETAvailable || showWatchOnlyABETAvailable);
-    ui->labelWatchAvailable->setVisible(showABETAvailable && showWatchOnly);
-    ui->labelUnconfirmed->setVisible(showABETPending || showWatchOnlyABETPending);
-    ui->labelPendingText->setVisible(showABETPending || showWatchOnlyABETPending);
-    ui->labelWatchPending->setVisible(showABETPending && showWatchOnly);
-    ui->labelLockedBalance->setVisible(showABETLocked || showWatchOnlyABETLocked);
-    ui->labelLockedBalanceText->setVisible(showABETLocked || showWatchOnlyABETLocked);
-    ui->labelWatchLocked->setVisible(showABETLocked && showWatchOnly);
+    ui->labelBalance->setVisible(showBTOKAvailable || showWatchOnlyBTOKAvailable);
+    ui->labelBalanceText->setVisible(showBTOKAvailable || showWatchOnlyBTOKAvailable);
+    ui->labelWatchAvailable->setVisible(showBTOKAvailable && showWatchOnly);
+    ui->labelUnconfirmed->setVisible(showBTOKPending || showWatchOnlyBTOKPending);
+    ui->labelPendingText->setVisible(showBTOKPending || showWatchOnlyBTOKPending);
+    ui->labelWatchPending->setVisible(showBTOKPending && showWatchOnly);
+    ui->labelLockedBalance->setVisible(showBTOKLocked || showWatchOnlyBTOKLocked);
+    ui->labelLockedBalanceText->setVisible(showBTOKLocked || showWatchOnlyBTOKLocked);
+    ui->labelWatchLocked->setVisible(showBTOKLocked && showWatchOnly);
     ui->labelImmature->setVisible(showImmature || showWatchOnlyImmature); // for symmetry reasons also show immature label when the watch-only one is shown
     ui->labelImmatureText->setVisible(showImmature || showWatchOnlyImmature);
     ui->labelWatchImmature->setVisible(showImmature && showWatchOnly);
-	bool showzABETAvailable = settingShowAllBalances; 
-	bool showzABETUnconfirmed = settingShowAllBalances;
-	bool showzABETImmature = settingShowAllBalances;
+	bool showzBTOKAvailable = settingShowAllBalances; 
+	bool showzBTOKUnconfirmed = settingShowAllBalances;
+	bool showzBTOKImmature = settingShowAllBalances;
 
     static int cachedTxLocks = 0;
 
@@ -437,14 +437,14 @@ void OverviewPage::updatBlockChainInfo()
         int CurrentBlock = (int)chainActive.Height();
         int64_t netHashRate = chainActive.GetNetworkHashPS(24, CurrentBlock - 1);
         double BlockReward = GetBlockValue(chainActive.Height());
-        double BlockRewardabetcoin = static_cast<double>(BlockReward / COIN);
+        double BlockRewardbtokcoin = static_cast<double>(BlockReward / COIN);
         double CurrentDiff = GetDifficulty();
 
         ui->label_CurrentBlock_value->setText(QString::number(CurrentBlock));
         //ui->label_Nethash->setText(tr("Difficulty:"));
         //ui->label_Nethash_value->setText(QString::number(CurrentDiff, 'f', 4));
 
-        ui->label_CurrentBlockReward_value->setText(QString::number(BlockRewardabetcoin, 'f', 1));
+        ui->label_CurrentBlockReward_value->setText(QString::number(BlockRewardbtokcoin, 'f', 1));
         ui->label_Supply_value->setText(QString::number(chainActive.Tip()->nMoneySupply / COIN).append(" BTOK"));
 		//ui->label_24hBlock_value->setText(QString::number(block24hCount));
         //ui->label_24hPoS_value->setText(QString::number(static_cast<double>(posMin) / COIN, 'f', 1).append(" | ") + QString::number(static_cast<double>(posMax) / COIN, 'f', 1));

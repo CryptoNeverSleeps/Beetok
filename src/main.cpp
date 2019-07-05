@@ -105,7 +105,7 @@ unsigned int StakeMinAgev2()
 
 int64_t nReserveBalance = 0;
 
-/** Fees smaller than this (in uabet) are considered zero fee (for relaying and mining)
+/** Fees smaller than this (in ubtok) are considered zero fee (for relaying and mining)
  * We are ~100 times smaller then bitcoin now (2015-06-23), set minRelayTxFee only 10 times higher
  * so it's still 10 times lower comparing to bitcoin.
  */
@@ -2729,7 +2729,7 @@ int64_t GetBlockValue(int nHeight)
             scriptcheckqueue.Thread();
         }
 
-        void RecalculateZABETMinted()
+        void RecalculateZBTOKMinted()
         {
             CBlockIndex* pindex = chainActive[Params().Zerocoin_StartHeight()];
             int nHeightEnd = chainActive.Height();
@@ -2756,7 +2756,7 @@ int64_t GetBlockValue(int nHeight)
             }
         }
 
-        void RecalculateZABETSpent()
+        void RecalculateZBTOKSpent()
         {
             CBlockIndex* pindex = chainActive[Params().Zerocoin_StartHeight()];
             while (true) {
@@ -2792,7 +2792,7 @@ int64_t GetBlockValue(int nHeight)
             }
         }
 
-        bool RecalculateABETSupply(int nHeightStart)
+        bool RecalculateBTOKSupply(int nHeightStart)
         {
             if (nHeightStart > chainActive.Height())
                 return false;
@@ -2899,7 +2899,7 @@ int64_t GetBlockValue(int nHeight)
             return true;
         }
 
-        bool UpdateZABETSupply(const CBlock& block, CBlockIndex* pindex)
+        bool UpdateZBTOKSupply(const CBlock& block, CBlockIndex* pindex)
         {
             std::list<CZerocoinMint> listMints;
             BlockToZerocoinMintList(block, listMints);
@@ -3197,14 +3197,14 @@ int64_t GetBlockValue(int nHeight)
                 pos.nTxOffset += ::GetSerializeSize(tx, SER_DISK, CLIENT_VERSION);
             }
 
-            UpdateZABETSupply(block, pindex);
+            UpdateZBTOKSupply(block, pindex);
 
             // track money supply and mint amount info
             CAmount nMoneySupplyPrev = pindex->pprev ? pindex->pprev->nMoneySupply : 0;
             pindex->nMoneySupply = nMoneySupplyPrev + nValueOut - nValueIn;
             pindex->nMint = pindex->nMoneySupply - nMoneySupplyPrev + nFees;
 
-            //    LogPrintf("XX69----------> ConnectBlock(): nValueOut: %s, nValueIn: %s, nFees: %s, nMint: %s zABETSpent: %s\n",
+            //    LogPrintf("XX69----------> ConnectBlock(): nValueOut: %s, nValueIn: %s, nFees: %s, nMint: %s zBTOKSpent: %s\n",
             //              FormatMoney(nValueOut), FormatMoney(nValueIn),
             //              FormatMoney(nFees), FormatMoney(pindex->nMint), FormatMoney(nAmountZerocoinSpent));
 

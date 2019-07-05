@@ -172,7 +172,7 @@
         <translation>Подтверждение шифрования кошелька</translation>
     </message>
     <message>
-        <source>Beetok will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your ABETs from being stolen by malware infecting your computer.</source>
+        <source>Beetok will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your BTOKs from being stolen by malware infecting your computer.</source>
         <translation>Beetok сейчас закроется, чтобы завершить процесс шифрования. Помните, что шифрование вашего кошелька не может полностью защитить ваши Beetok от кражи с использованием вредоносного ПО.</translation>
     </message>
     <message>
@@ -3198,7 +3198,7 @@ https://www.transifex.com/beetok-project/beetok-project-translations</translatio
     </message>
     </context>
 <context>
-    <name>ZAbetControlDialog</name>
+    <name>ZBtokControlDialog</name>
     <message>
         <source>0</source>
         <translation>0</translation>

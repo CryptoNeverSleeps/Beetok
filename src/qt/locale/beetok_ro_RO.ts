@@ -183,7 +183,7 @@
     </message>
     </context>
 <context>
-    <name>ZAbetControlDialog</name>
+    <name>ZBtokControlDialog</name>
     </context>
 <context>
     <name>beetok-core</name>

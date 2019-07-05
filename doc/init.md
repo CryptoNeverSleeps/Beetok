@@ -1,14 +1,14 @@
-Sample init scripts and service configuration for altbetd
+Sample init scripts and service configuration for beetokd
 ==========================================================
 
 Sample scripts and configuration files for systemd, Upstart and OpenRC
 can be found in the contrib/init folder.
 
-    contrib/init/altbetd.service:    systemd service unit configuration
-    contrib/init/altbetd.openrc:     OpenRC compatible SysV style init script
-    contrib/init/altbetd.openrcconf: OpenRC conf.d file
-    contrib/init/altbetd.conf:       Upstart service configuration file
-    contrib/init/altbetd.init:       CentOS compatible SysV style init script
+    contrib/init/beetokd.service:    systemd service unit configuration
+    contrib/init/beetokd.openrc:     OpenRC compatible SysV style init script
+    contrib/init/beetokd.openrcconf: OpenRC conf.d file
+    contrib/init/beetokd.conf:       Upstart service configuration file
+    contrib/init/beetokd.init:       CentOS compatible SysV style init script
 
 1. Service User
 ---------------------------------
@@ -19,17 +19,17 @@ and group.  They must be created before attempting to use these scripts.
 2. Configuration
 ---------------------------------
 
-At a bare minimum, altbetd requires that the rpcpassword setting be set
+At a bare minimum, beetokd requires that the rpcpassword setting be set
 when running as a daemon.  If the configuration file does not exist or this
-setting is not set, altbetd will shutdown promptly after startup.
+setting is not set, beetokd will shutdown promptly after startup.
 
 This password does not have to be remembered or typed as it is mostly used
-as a fixed token that altbetd and client programs read from the configuration
+as a fixed token that beetokd and client programs read from the configuration
 file, however it is recommended that a strong and secure password be used
 as this password is security critical to securing the wallet should the
 wallet be enabled.
 
-If altbetd is run with "-daemon" flag, and no rpcpassword is set, it will
+If beetokd is run with "-daemon" flag, and no rpcpassword is set, it will
 print a randomly generated suitable password to stderr.  You can also
 generate one from the shell yourself like this:
 
@@ -45,16 +45,16 @@ see contrib/debian/examples/beetok.conf.
 
 All three configurations assume several paths that might need to be adjusted.
 
-Binary:              /usr/bin/altbetd
+Binary:              /usr/bin/beetokd
 Configuration file:  /etc/beetok/beetok.conf
-Data directory:      /var/lib/altbetd
-PID file:            /var/run/altbetd/altbetd.pid (OpenRC and Upstart)
-                     /var/lib/altbetd/altbetd.pid (systemd)
+Data directory:      /var/lib/beetokd
+PID file:            /var/run/beetokd/beetokd.pid (OpenRC and Upstart)
+                     /var/lib/beetokd/beetokd.pid (systemd)
 
 The configuration file, PID directory (if applicable) and data directory
 should all be owned by the beetok user and group.  It is advised for security
 reasons to make the configuration file and data directory only readable by the
-beetok user and group.  Access to beetok-cli and other altbetd rpc clients
+beetok user and group.  Access to beetok-cli and other beetokd rpc clients
 can then be controlled by group membership.
 
 4. Installing Service Configuration
@@ -66,19 +66,19 @@ Installing this .service file consists on just copying it to
 /usr/lib/systemd/system directory, followed by the command
 "systemctl daemon-reload" in order to update running systemd configuration.
 
-To test, run "systemctl start altbetd" and to enable for system startup run
-"systemctl enable altbetd"
+To test, run "systemctl start beetokd" and to enable for system startup run
+"systemctl enable beetokd"
 
 4b) OpenRC
 
-Rename altbetd.openrc to altbetd and drop it in /etc/init.d.  Double
+Rename beetokd.openrc to beetokd and drop it in /etc/init.d.  Double
 check ownership and permissions and make it executable.  Test it with
-"/etc/init.d/altbetd start" and configure it to run on startup with
-"rc-update add altbetd"
+"/etc/init.d/beetokd start" and configure it to run on startup with
+"rc-update add beetokd"
 
 4c) Upstart (for Debian/Ubuntu based distributions)
 
-Drop altbetd.conf in /etc/init.  Test by running "service altbetd start"
+Drop beetokd.conf in /etc/init.  Test by running "service beetokd start"
 it will automatically start on reboot.
 
 NOTE: This script is incompatible with CentOS 5 and Amazon Linux 2014 as they
@@ -86,11 +86,11 @@ use old versions of Upstart and do not supply the start-stop-daemon uitility.
 
 4d) CentOS
 
-Copy altbetd.init to /etc/init.d/altbetd. Test by running "service altbetd start".
+Copy beetokd.init to /etc/init.d/beetokd. Test by running "service beetokd start".
 
-Using this script, you can adjust the path and flags to the altbetd program by
-setting the AltbetD and FLAGS environment variables in the file
-/etc/sysconfig/altbetd. You can also use the DAEMONOPTS environment variable here.
+Using this script, you can adjust the path and flags to the beetokd program by
+setting the BeetokD and FLAGS environment variables in the file
+/etc/sysconfig/beetokd. You can also use the DAEMONOPTS environment variable here.
 
 5. Auto-respawn
 -----------------------------------

@@ -21,8 +21,8 @@ QList<BitcoinUnits::Unit> BitcoinUnits::availableUnits()
 {
     QList<BitcoinUnits::Unit> unitlist;
     unitlist.append(BTOK);
-    unitlist.append(mABET);
-    unitlist.append(uABET);
+    unitlist.append(mBTOK);
+    unitlist.append(uBTOK);
     return unitlist;
 }
 
@@ -30,8 +30,8 @@ bool BitcoinUnits::valid(int unit)
 {
     switch (unit) {
     case BTOK:
-    case mABET:
-    case uABET:
+    case mBTOK:
+    case uBTOK:
         return true;
     default:
         return false;
@@ -43,10 +43,10 @@ QString BitcoinUnits::id(int unit)
     switch (unit) {
     case BTOK:
         return QString("beetok");
-    case mABET:
-        return QString("maltbet");
-    case uABET:
-        return QString::fromUtf8("ualtbet");
+    case mBTOK:
+        return QString("mbeetok");
+    case uBTOK:
+        return QString::fromUtf8("ubeetok");
     default:
         return QString("???");
     }
@@ -58,9 +58,9 @@ QString BitcoinUnits::name(int unit)
         switch (unit) {
         case BTOK:
             return QString("BTOK");
-        case mABET:
-            return QString("mABET");
-        case uABET:
+        case mBTOK:
+            return QString("mBTOK");
+        case uBTOK:
             return QString::fromUtf8("μBTOK");
         default:
             return QString("???");
@@ -68,11 +68,11 @@ QString BitcoinUnits::name(int unit)
     } else {
         switch (unit) {
         case BTOK:
-            return QString("tABET");
-        case mABET:
-            return QString("mtABET");
-        case uABET:
-            return QString::fromUtf8("μtABET");
+            return QString("tBTOK");
+        case mBTOK:
+            return QString("mtBTOK");
+        case uBTOK:
+            return QString::fromUtf8("μtBTOK");
         default:
             return QString("???");
         }
@@ -85,9 +85,9 @@ QString BitcoinUnits::description(int unit)
         switch (unit) {
         case BTOK:
             return QString("BTOK");
-        case mABET:
+        case mBTOK:
             return QString("Milli-BTOK (1 / 1" THIN_SP_UTF8 "000)");
-        case uABET:
+        case uBTOK:
             return QString("Micro-BTOK (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
         default:
             return QString("???");
@@ -95,11 +95,11 @@ QString BitcoinUnits::description(int unit)
     } else {
         switch (unit) {
         case BTOK:
-            return QString("TestABETs");
-        case mABET:
-            return QString("Milli-TestABET (1 / 1" THIN_SP_UTF8 "000)");
-        case uABET:
-            return QString("Micro-TestABET (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
+            return QString("TestBTOKs");
+        case mBTOK:
+            return QString("Milli-TestBTOK (1 / 1" THIN_SP_UTF8 "000)");
+        case uBTOK:
+            return QString("Micro-TestBTOK (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
         default:
             return QString("???");
         }
@@ -111,9 +111,9 @@ qint64 BitcoinUnits::factor(int unit)
     switch (unit) {
     case BTOK:
         return 100000000;
-    case mABET:
+    case mBTOK:
         return 100000;
-    case uABET:
+    case uBTOK:
         return 100;
     default:
         return 100000000;
@@ -125,9 +125,9 @@ int BitcoinUnits::decimals(int unit)
     switch (unit) {
     case BTOK:
         return 8;
-    case mABET:
+    case mBTOK:
         return 5;
-    case uABET:
+    case uBTOK:
         return 2;
     default:
         return 0;

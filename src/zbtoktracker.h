@@ -2,15 +2,15 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ALTBET_ZABETTRACKER_H
-#define ALTBET_ZABETTRACKER_H
+#ifndef BEETOK_ZBTOKTRACKER_H
+#define BEETOK_ZBTOKTRACKER_H
 
 #include "primitives/zerocoin.h"
 #include <list>
 
 class CDeterministicMint;
 
-class CzABETTracker
+class CzBTOKTracker
 {
 private:
     bool fInitialized;
@@ -19,8 +19,8 @@ private:
     std::map<uint256, uint256> mapPendingSpends; //serialhash, txid of spend
     bool UpdateStatusInternal(const std::set<uint256>& setMempool, CMintMeta& mint);
 public:
-    CzABETTracker(std::string strWalletFile);
-    ~CzABETTracker();
+    CzBTOKTracker(std::string strWalletFile);
+    ~CzBTOKTracker();
     void Add(const CDeterministicMint& dMint, bool isNew = false, bool isArchived = false);
     void Add(const CZerocoinMint& mint, bool isNew = false, bool isArchived = false);
     bool Archive(CMintMeta& meta);
@@ -48,5 +48,5 @@ public:
     void Clear();
 };
 
-#endif //ALTBET_ZABETTRACKER_H
+#endif //BEETOK_ZBTOKTRACKER_H
 

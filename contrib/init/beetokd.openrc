@@ -5,21 +5,21 @@
 if [ -d "/var/lib/beetok/.beetok" ]; then
 	BITCOIND_DEFAULT_DATADIR="/var/lib/beetok/.beetok"
 else
-	BITCOIND_DEFAULT_DATADIR="/var/lib/altbetd"
+	BITCOIND_DEFAULT_DATADIR="/var/lib/beetokd"
 fi
 
 BITCOIND_CONFIGFILE=${BITCOIND_CONFIGFILE:-/etc/beetok/beetok.conf}
-BITCOIND_PIDDIR=${BITCOIND_PIDDIR:-/var/run/altbetd}
-BITCOIND_PIDFILE=${BITCOIND_PIDFILE:-${BITCOIND_PIDDIR}/altbetd.pid}
+BITCOIND_PIDDIR=${BITCOIND_PIDDIR:-/var/run/beetokd}
+BITCOIND_PIDFILE=${BITCOIND_PIDFILE:-${BITCOIND_PIDDIR}/beetokd.pid}
 BITCOIND_DATADIR=${BITCOIND_DATADIR:-${BITCOIND_DEFAULT_DATADIR}}
 BITCOIND_USER=${BITCOIND_USER:-beetok}
 BITCOIND_GROUP=${BITCOIND_GROUP:-beetok}
-BITCOIND_BIN=${BITCOIND_BIN:-/usr/bin/altbetd}
+BITCOIND_BIN=${BITCOIND_BIN:-/usr/bin/beetokd}
 
 name="Beetok Core Daemon"
 description="Beetok crypto-currency p2p network daemon"
 
-command="/usr/bin/altbetd"
+command="/usr/bin/beetokd"
 command_args="-pid=\"${BITCOIND_PIDFILE}\" \
 		-conf=\"${BITCOIND_CONFIGFILE}\" \
 		-datadir=\"${BITCOIND_DATADIR}\" \
@@ -65,7 +65,7 @@ checkconfig()
 {
 	if ! grep -qs '^rpcpassword=' "${BITCOIND_CONFIGFILE}" ; then
 		eerror ""
-		eerror "ERROR: You must set a secure rpcpassword to run altbetd."
+		eerror "ERROR: You must set a secure rpcpassword to run beetokd."
 		eerror "The setting must appear in ${BITCOIND_CONFIGFILE}"
 		eerror ""
 		eerror "This password is security critical to securing wallets "

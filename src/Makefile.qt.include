@@ -7,32 +7,32 @@ EXTRA_LIBRARIES += qt/libbitcoinqt.a
 
 # beetok qt core #
 QT_TS = \
-  qt/locale/altbet_bg.ts \
-  qt/locale/altbet_ca.ts \
-  qt/locale/altbet_cs.ts \
-  qt/locale/altbet_da.ts \
-  qt/locale/altbet_de.ts \
-  qt/locale/altbet_en.ts \
-  qt/locale/altbet_en_US.ts \
-  qt/locale/altbet_es.ts \
-  qt/locale/altbet_fi.ts \
-  qt/locale/altbet_fr_FR.ts \
-  qt/locale/altbet_hr.ts \
-  qt/locale/altbet_it.ts \
-  qt/locale/altbet_ja.ts \
-  qt/locale/altbet_ko_KR.ts \
-  qt/locale/altbet_nl.ts \
-  qt/locale/altbet_pl.ts \
-  qt/locale/altbet_pt.ts \
-  qt/locale/altbet_pt_BR.ts \
-  qt/locale/altbet_ro_RO.ts \
-  qt/locale/altbet_ru.ts \
-  qt/locale/altbet_sk.ts \
-  qt/locale/altbet_sv.ts \
-  qt/locale/altbet_tr.ts \
-  qt/locale/altbet_uk.ts \
-  qt/locale/altbet_zh_CN.ts \
-  qt/locale/altbet_zh_TW.ts
+  qt/locale/beetok_bg.ts \
+  qt/locale/beetok_ca.ts \
+  qt/locale/beetok_cs.ts \
+  qt/locale/beetok_da.ts \
+  qt/locale/beetok_de.ts \
+  qt/locale/beetok_en.ts \
+  qt/locale/beetok_en_US.ts \
+  qt/locale/beetok_es.ts \
+  qt/locale/beetok_fi.ts \
+  qt/locale/beetok_fr_FR.ts \
+  qt/locale/beetok_hr.ts \
+  qt/locale/beetok_it.ts \
+  qt/locale/beetok_ja.ts \
+  qt/locale/beetok_ko_KR.ts \
+  qt/locale/beetok_nl.ts \
+  qt/locale/beetok_pl.ts \
+  qt/locale/beetok_pt.ts \
+  qt/locale/beetok_pt_BR.ts \
+  qt/locale/beetok_ro_RO.ts \
+  qt/locale/beetok_ru.ts \
+  qt/locale/beetok_sk.ts \
+  qt/locale/beetok_sv.ts \
+  qt/locale/beetok_tr.ts \
+  qt/locale/beetok_uk.ts \
+  qt/locale/beetok_zh_CN.ts \
+  qt/locale/beetok_zh_TW.ts
 
 QT_FORMS_UI = \
   qt/forms/addressbookpage.ui \
@@ -60,7 +60,7 @@ QT_FORMS_UI = \
   qt/forms/sendcoinsentry.ui \
   qt/forms/signverifymessagedialog.ui \
   qt/forms/transactiondescdialog.ui \
-  qt/forms/zabetcontroldialog.ui
+  qt/forms/zbtokcontroldialog.ui
 
 QT_MOC_CPP = \
   qt/moc_addressbookpage.cpp \
@@ -120,7 +120,7 @@ QT_MOC_CPP = \
   qt/moc_walletframe.cpp \
   qt/moc_walletmodel.cpp \
   qt/moc_walletview.cpp \
-  qt/moc_zabetcontroldialog.cpp
+  qt/moc_zbtokcontroldialog.cpp
 
 BITCOIN_MM = \
   qt/macdockiconhandler.mm \
@@ -133,10 +133,10 @@ QT_MOC = \
   qt/overviewpage.moc \
   qt/rpcconsole.moc
 
-QT_QRC_CPP = qt/qrc_altbet.cpp
+QT_QRC_CPP = qt/qrc_beetok.cpp
 QT_QRC = qt/beetok.qrc
-QT_QRC_LOCALE_CPP = qt/qrc_altbet_locale.cpp
-QT_QRC_LOCALE = qt/altbet_locale.qrc
+QT_QRC_LOCALE_CPP = qt/qrc_beetok_locale.cpp
+QT_QRC_LOCALE = qt/beetok_locale.qrc
 
 PROTOBUF_CC = qt/paymentrequest.pb.cc
 PROTOBUF_H = qt/paymentrequest.pb.h
@@ -208,7 +208,7 @@ BITCOIN_QT_H = \
   qt/walletmodeltransaction.h \
   qt/walletview.h \
   qt/winshutdownmonitor.h \
-  qt/zabetcontroldialog.h
+  qt/zbtokcontroldialog.h
 
 RES_ICONS = \
   qt/res/icons/add.png \
@@ -272,12 +272,12 @@ RES_ICONS = \
   qt/res/icons/tx_input.png \
   qt/res/icons/tx_output.png \
   qt/res/icons/tx_mined.png \
-  qt/res/icons/unit_altbet.png \
-  qt/res/icons/unit_maltbet.png \
-  qt/res/icons/unit_ualtbet.png \
-  qt/res/icons/unit_taltbet.png \
-  qt/res/icons/unit_tmaltbet.png \
-  qt/res/icons/unit_tualtbet.png \
+  qt/res/icons/unit_beetok.png \
+  qt/res/icons/unit_mbeetok.png \
+  qt/res/icons/unit_ubeetok.png \
+  qt/res/icons/unit_tbeetok.png \
+  qt/res/icons/unit_tmbeetok.png \
+  qt/res/icons/unit_tubeetok.png \
   qt/res/icons/toolbarbg.png \
   qt/res/icons/logo.png \
   qt/res/icons/balancebg.png
@@ -354,13 +354,13 @@ BITCOIN_QT_CPP += \
   qt/walletmodel.cpp \
   qt/walletmodeltransaction.cpp \
   qt/walletview.cpp \
-  qt/zabetcontroldialog.cpp
+  qt/zbtokcontroldialog.cpp
 
 endif
 
 RES_IMAGES = \
   qt/res/images/about.png \
-  qt/res/images/altbet_logo_horizontal.png \
+  qt/res/images/beetok_logo_horizontal.png \
   qt/res/images/downArrow.png \
   qt/res/images/downArrow_small.png \
   qt/res/images/qtreeview_selected.png \
@@ -411,7 +411,7 @@ QT_FORMS_H=$(join $(dir $(QT_FORMS_UI)),$(addprefix ui_, $(notdir $(QT_FORMS_UI:
 # Most files will depend on the forms and moc files as includes. Generate them
 # before anything else.
 $(QT_MOC): $(QT_FORMS_H)
-$(qt_libbitcoinqt_a_OBJECTS) $(qt_altbet_qt_OBJECTS) : | $(QT_MOC)
+$(qt_libbitcoinqt_a_OBJECTS) $(qt_beetok_qt_OBJECTS) : | $(QT_MOC)
 
 #Generating these with a half-written protobuf header leads to wacky results.
 #This makes sure it's done.
@@ -419,48 +419,48 @@ $(QT_MOC): $(PROTOBUF_H)
 $(QT_MOC_CPP): $(PROTOBUF_H)
 
 # beetok-qt binary #
-qt_altbet_qt_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(BITCOIN_QT_INCLUDES) \
+qt_beetok_qt_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(BITCOIN_QT_INCLUDES) \
   $(QT_INCLUDES) $(PROTOBUF_CFLAGS) $(QR_CFLAGS)
-qt_altbet_qt_CXXFLAGS = $(AM_CXXFLAGS) $(QT_PIE_FLAGS)
+qt_beetok_qt_CXXFLAGS = $(AM_CXXFLAGS) $(QT_PIE_FLAGS)
 qt_bitcoin_qt_CXXFLAGS = $(AM_CXXFLAGS) $(QT_PIE_FLAGS)
 
-qt_altbet_qt_SOURCES = qt/beetok.cpp
+qt_beetok_qt_SOURCES = qt/beetok.cpp
 if TARGET_DARWIN
-  qt_altbet_qt_SOURCES += $(BITCOIN_MM)
+  qt_beetok_qt_SOURCES += $(BITCOIN_MM)
 endif
 if TARGET_WINDOWS
-  qt_altbet_qt_SOURCES += $(BITCOIN_RC)
+  qt_beetok_qt_SOURCES += $(BITCOIN_RC)
 endif
-qt_altbet_qt_LDADD = qt/libbitcoinqt.a $(LIBBITCOIN_SERVER)
+qt_beetok_qt_LDADD = qt/libbitcoinqt.a $(LIBBITCOIN_SERVER)
 if ENABLE_WALLET
-qt_altbet_qt_LDADD += $(LIBBITCOIN_WALLET)
+qt_beetok_qt_LDADD += $(LIBBITCOIN_WALLET)
 endif
 if ENABLE_ZMQ
-qt_altbet_qt_LDADD += $(LIBBITCOIN_ZMQ) $(ZMQ_LIBS)
+qt_beetok_qt_LDADD += $(LIBBITCOIN_ZMQ) $(ZMQ_LIBS)
 endif
-qt_altbet_qt_LDADD += $(LIBBITCOIN_CLI) $(LIBBITCOIN_COMMON) $(LIBBITCOIN_UTIL) $(LIBBITCOIN_CRYPTO) $(LIBUNIVALUE) $(LIBBITCOIN_ZEROCOIN) $(LIBLEVELDB) $(LIBMEMENV) \
+qt_beetok_qt_LDADD += $(LIBBITCOIN_CLI) $(LIBBITCOIN_COMMON) $(LIBBITCOIN_UTIL) $(LIBBITCOIN_CRYPTO) $(LIBUNIVALUE) $(LIBBITCOIN_ZEROCOIN) $(LIBLEVELDB) $(LIBMEMENV) \
   $(BOOST_LIBS) $(QT_LIBS) $(QT_DBUS_LIBS) $(QR_LIBS) $(PROTOBUF_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(LIBSECP256K1) \
   $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS)
-qt_altbet_qt_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(QT_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
-qt_altbet_qt_LIBTOOLFLAGS = --tag CXX
+qt_beetok_qt_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(QT_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+qt_beetok_qt_LIBTOOLFLAGS = --tag CXX
 
 #locale/foo.ts -> locale/foo.qm
 QT_QM=$(QT_TS:.ts=.qm)
 
 SECONDARY: $(QT_QM)
 
-$(srcdir)/qt/altbetstrings.cpp: $(libbitcoin_server_a_SOURCES) $(libbitcoin_wallet_a_SOURCES) $(libbitcoin_common_a_SOURCES) $(libbitcoin_zmq_a_SOURCES) $(libbitcoin_util_a_SOURCES)
+$(srcdir)/qt/beetokstrings.cpp: $(libbitcoin_server_a_SOURCES) $(libbitcoin_wallet_a_SOURCES) $(libbitcoin_common_a_SOURCES) $(libbitcoin_zmq_a_SOURCES) $(libbitcoin_util_a_SOURCES)
 	@test -n $(XGETTEXT) || echo "xgettext is required for updating translations"
 	$(AM_V_GEN) cd $(srcdir); XGETTEXT=$(XGETTEXT) PACKAGE_NAME="$(PACKAGE_NAME)" $(PYTHON) ../share/qt/extract_strings_qt.py $^
 
-translate: $(srcdir)/qt/altbetstrings.cpp $(QT_FORMS_UI) $(QT_FORMS_UI) $(BITCOIN_QT_CPP) $(BITCOIN_QT_H) $(BITCOIN_MM)
+translate: $(srcdir)/qt/beetokstrings.cpp $(QT_FORMS_UI) $(QT_FORMS_UI) $(BITCOIN_QT_CPP) $(BITCOIN_QT_H) $(BITCOIN_MM)
 	@test -n $(LUPDATE) || echo "lupdate is required for updating translations"
-	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(LUPDATE) $^ -locations relative -no-obsolete -ts $(srcdir)/qt/locale/altbet_en.ts
+	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(LUPDATE) $^ -locations relative -no-obsolete -ts $(srcdir)/qt/locale/beetok_en.ts
 
 $(QT_QRC_LOCALE_CPP): $(QT_QRC_LOCALE) $(QT_QM)
 	@test -f $(RCC)
 	@cp -f $< $(@D)/temp_$(<F)
-	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(RCC) -name altbet_locale $(@D)/temp_$(<F) | \
+	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(RCC) -name beetok_locale $(@D)/temp_$(<F) | \
 	  $(SED) -e '/^\*\*.*Created:/d' -e '/^\*\*.*by:/d' > $@
 	@rm $(@D)/temp_$(<F)
 
@@ -469,14 +469,14 @@ $(QT_QRC_CPP): $(QT_QRC) $(QT_FORMS_H) $(RES_ICONS) $(RES_IMAGES) $(RES_CSS) $(R
 	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(RCC) -name beetok $< | \
 	  $(SED) -e '/^\*\*.*Created:/d' -e '/^\*\*.*by:/d' > $@
 
-CLEAN_QT = $(nodist_qt_libbitcoinqt_a_SOURCES) $(QT_QM) $(QT_FORMS_H) qt/*.gcda qt/*.gcno qt/temp_altbet_locale.qrc
+CLEAN_QT = $(nodist_qt_libbitcoinqt_a_SOURCES) $(QT_QM) $(QT_FORMS_H) qt/*.gcda qt/*.gcno qt/temp_beetok_locale.qrc
 
 CLEANFILES += $(CLEAN_QT)
 
-altbet_qt_clean: FORCE
-	rm -f $(CLEAN_QT) $(qt_libbitcoinqt_a_OBJECTS) $(qt_altbet_qt_OBJECTS) qt/beetok-qt$(EXEEXT) $(LIBBITCOINQT)
+beetok_qt_clean: FORCE
+	rm -f $(CLEAN_QT) $(qt_libbitcoinqt_a_OBJECTS) $(qt_beetok_qt_OBJECTS) qt/beetok-qt$(EXEEXT) $(LIBBITCOINQT)
 
-altbet_qt : qt/beetok-qt$(EXEEXT)
+beetok_qt : qt/beetok-qt$(EXEEXT)
 
 ui_%.h: %.ui
 	@test -f $(UIC)

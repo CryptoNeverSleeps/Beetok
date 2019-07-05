@@ -70,9 +70,9 @@ Clone the git repositories for beetok and Gitian.
 
 ```bash
 git clone https://github.com/devrandom/gitian-builder.git
-git clone https://github.com/altbetproject/beetok
-git clone https://github.com/altbetproject/gitian.sigs.git
-git clone https://github.com/altbetproject/beetok-detached-sigs.git
+git clone https://github.com/beetokproject/beetok
+git clone https://github.com/beetokproject/gitian.sigs.git
+git clone https://github.com/beetokproject/beetok-detached-sigs.git
 ```
 
 Setting up the Gitian image

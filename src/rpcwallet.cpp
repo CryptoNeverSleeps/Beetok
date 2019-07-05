@@ -93,7 +93,7 @@ UniValue getnewaddress(const UniValue& params, bool fHelp)
             "1. \"account\"        (string, optional) The account name for the address to be linked to. if not provided, the default account \"\" is used. It can also be set to the empty string \"\" to represent the default account. The account does not need to exist, it will be created if there is no account by the given name.\n"
             "2. \"address_type\"   (string, optional) The address type to use. Options are \"legacy\", \"p2sh-segwit\", and \"bech32\". Default is set by -addresstype.\n"
             "\nResult:\n"
-            "\"altbetaddress\"    (string) The new beetok address\n"
+            "\"beetokaddress\"    (string) The new beetok address\n"
             "\nExamples:\n" +
             HelpExampleCli("getnewaddress", "") + HelpExampleCli("getnewaddress", "\"\"") + HelpExampleCli("getnewaddress", "\"myaccount\"") + HelpExampleRpc("getnewaddress", "\"myaccount\""));
 
@@ -172,7 +172,7 @@ UniValue getaccountaddress(const UniValue& params, bool fHelp)
             "\nArguments:\n"
             "1. \"account\"       (string, required) The account name for the address. It can also be set to the empty string \"\" to represent the default account. The account does not need to exist, it will be created and a new address created  if there is no account by the given name.\n"
             "\nResult:\n"
-            "\"altbetaddress\"   (string) The account beetok address\n"
+            "\"beetokaddress\"   (string) The account beetok address\n"
             "\nExamples:\n" +
             HelpExampleCli("getaccountaddress", "") + HelpExampleCli("getaccountaddress", "\"\"") + HelpExampleCli("getaccountaddress", "\"myaccount\"") + HelpExampleRpc("getaccountaddress", "\"myaccount\""));
 
@@ -233,10 +233,10 @@ UniValue setaccount(const UniValue& params, bool fHelp)
 {
     if (fHelp || params.size() < 1 || params.size() > 2)
         throw runtime_error(
-            "setaccount \"altbetaddress\" \"account\"\n"
+            "setaccount \"beetokaddress\" \"account\"\n"
             "\nSets the account associated with the given address.\n"
             "\nArguments:\n"
-            "1. \"altbetaddress\"  (string, required) The beetok address to be associated with an account.\n"
+            "1. \"beetokaddress\"  (string, required) The beetok address to be associated with an account.\n"
             "2. \"account\"         (string, required) The account to assign the address to.\n"
             "\nExamples:\n" +
             HelpExampleCli("setaccount", "\"XwnLY9Tf7Zsef8gMGL2fhWA9ZmMjt4KPwg\" \"tabby\"") + HelpExampleRpc("setaccount", "\"XwnLY9Tf7Zsef8gMGL2fhWA9ZmMjt4KPwg\", \"tabby\""));
@@ -272,10 +272,10 @@ UniValue getaccount(const UniValue& params, bool fHelp)
 {
     if (fHelp || params.size() != 1)
         throw runtime_error(
-            "getaccount \"altbetaddress\"\n"
+            "getaccount \"beetokaddress\"\n"
             "\nReturns the account associated with the given address.\n"
             "\nArguments:\n"
-            "1. \"altbetaddress\"  (string, required) The beetok address for account lookup.\n"
+            "1. \"beetokaddress\"  (string, required) The beetok address for account lookup.\n"
             "\nResult:\n"
             "\"accountname\"        (string) the account address\n"
             "\nExamples:\n" +
@@ -306,7 +306,7 @@ UniValue getaddressesbyaccount(const UniValue& params, bool fHelp)
             "1. \"account\"  (string, required) The account name.\n"
             "\nResult:\n"
             "[                     (json array of string)\n"
-            "  \"altbetaddress\"  (string) a beetok address associated with the given account\n"
+            "  \"beetokaddress\"  (string) a beetok address associated with the given account\n"
             "  ,...\n"
             "]\n"
             "\nExamples:\n" +
@@ -363,11 +363,11 @@ UniValue sendtoaddress(const UniValue& params, bool fHelp)
 {
     if (fHelp || params.size() < 2 || params.size() > 4)
         throw runtime_error(
-            "sendtoaddress \"altbetaddress\" amount ( \"comment\" \"comment-to\" )\n"
+            "sendtoaddress \"beetokaddress\" amount ( \"comment\" \"comment-to\" )\n"
             "\nSend an amount to a given address. The amount is a real and is rounded to the nearest 0.00000001\n" +
             HelpRequiringPassphrase() +
             "\nArguments:\n"
-            "1. \"altbetaddress\"  (string, required) The beetok address to send to.\n"
+            "1. \"beetokaddress\"  (string, required) The beetok address to send to.\n"
             "2. \"amount\"      (numeric, required) The amount in beetok to send. e.g. 0.1\n"
             "3. \"comment\"     (string, optional) A comment used to store what the transaction is for. \n"
             "                             This is not part of the transaction, just kept in your wallet.\n"
@@ -407,11 +407,11 @@ UniValue sendtoaddressix(const UniValue& params, bool fHelp)
 {
     if (fHelp || params.size() < 2 || params.size() > 4)
         throw runtime_error(
-            "sendtoaddressix \"altbetaddress\" amount ( \"comment\" \"comment-to\" )\n"
+            "sendtoaddressix \"beetokaddress\" amount ( \"comment\" \"comment-to\" )\n"
             "\nSend an amount to a given address. The amount is a real and is rounded to the nearest 0.00000001\n" +
             HelpRequiringPassphrase() +
             "\nArguments:\n"
-            "1. \"altbetaddress\"  (string, required) The beetok address to send to.\n"
+            "1. \"beetokaddress\"  (string, required) The beetok address to send to.\n"
             "2. \"amount\"      (numeric, required) The  to send. e.g. 0.1\n"
             "3. \"comment\"     (string, optional) A comment used to store what the transaction is for. \n"
             "                             This is not part of the transaction, just kept in your wallet.\n"
@@ -459,7 +459,7 @@ UniValue listaddressgroupings(const UniValue& params, bool fHelp)
             "[\n"
             "  [\n"
             "    [\n"
-            "      \"altbetaddress\",     (string) The beetok address\n"
+            "      \"beetokaddress\",     (string) The beetok address\n"
             "      amount,                 (numeric) The amount in beetok\n"
             "      \"account\"             (string, optional) The account\n"
             "    ]\n"
@@ -495,11 +495,11 @@ UniValue signmessage(const UniValue& params, bool fHelp)
 {
     if (fHelp || params.size() != 2)
         throw runtime_error(
-            "signmessage \"altbetaddress\" \"message\"\n"
+            "signmessage \"beetokaddress\" \"message\"\n"
             "\nSign a message with the private key of an address" +
             HelpRequiringPassphrase() + "\n"
                                         "\nArguments:\n"
-                                        "1. \"altbetaddress\"  (string, required) The beetok address to use for the private key.\n"
+                                        "1. \"beetokaddress\"  (string, required) The beetok address to use for the private key.\n"
                                         "2. \"message\"         (string, required) The message to create a signature of.\n"
                                         "\nResult:\n"
                                         "\"signature\"          (string) The signature of the message encoded in base 64\n"
@@ -545,10 +545,10 @@ UniValue getreceivedbyaddress(const UniValue& params, bool fHelp)
 {
     if (fHelp || params.size() < 1 || params.size() > 2)
         throw runtime_error(
-            "getreceivedbyaddress \"altbetaddress\" ( minconf )\n"
-            "\nReturns the total amount received by the given altbetaddress in transactions with at least minconf confirmations.\n"
+            "getreceivedbyaddress \"beetokaddress\" ( minconf )\n"
+            "\nReturns the total amount received by the given beetokaddress in transactions with at least minconf confirmations.\n"
             "\nArguments:\n"
-            "1. \"altbetaddress\"  (string, required) The beetok address for transactions.\n"
+            "1. \"beetokaddress\"  (string, required) The beetok address for transactions.\n"
             "2. minconf             (numeric, optional, default=1) Only include transactions confirmed at least this many times.\n"
             "\nResult:\n"
             "amount   (numeric) The total amount in beetok received at this address.\n"
@@ -821,13 +821,13 @@ UniValue sendfrom(const UniValue& params, bool fHelp)
 {
     if (fHelp || params.size() < 3 || params.size() > 6)
         throw runtime_error(
-            "sendfrom \"fromaccount\" \"toaltbetaddress\" amount ( minconf \"comment\" \"comment-to\" )\n"
+            "sendfrom \"fromaccount\" \"tobeetokaddress\" amount ( minconf \"comment\" \"comment-to\" )\n"
             "\nSent an amount from an account to a beetok address.\n"
             "The amount is a real and is rounded to the nearest 0.00000001." +
             HelpRequiringPassphrase() + "\n"
                                         "\nArguments:\n"
                                         "1. \"fromaccount\"       (string, required) The name of the account to send funds from. May be the default account using \"\".\n"
-                                        "2. \"toaltbetaddress\"  (string, required) The beetok address to send funds to.\n"
+                                        "2. \"tobeetokaddress\"  (string, required) The beetok address to send funds to.\n"
                                         "3. amount                (numeric, required) The amount in beetok. (transaction fee is added on top).\n"
                                         "4. minconf               (numeric, optional, default=1) Only use funds with at least this many confirmations.\n"
                                         "5. \"comment\"           (string, optional) A comment used to store what the transaction is for. \n"
@@ -976,7 +976,7 @@ UniValue addmultisigaddress(const UniValue& params, bool fHelp)
                      "3. \"account\"      (string, optional) An account to assign the addresses to.\n"
 
                      "\nResult:\n"
-                     "\"altbetaddress\"  (string) A beetok address associated with the keys.\n"
+                     "\"beetokaddress\"  (string) A beetok address associated with the keys.\n"
 
                      "\nExamples:\n"
                      "\nAdd a multisig address from 2 addresses\n" +
@@ -1412,7 +1412,7 @@ UniValue listtransactions(const UniValue& params, bool fHelp)
             "  {\n"
             "    \"account\":\"accountname\",       (string) The account name associated with the transaction. \n"
             "                                                It will be \"\" for the default account.\n"
-            "    \"address\":\"altbetaddress\",    (string) The beetok address of the transaction. Not present for \n"
+            "    \"address\":\"beetokaddress\",    (string) The beetok address of the transaction. Not present for \n"
             "                                                move transactions (category = move).\n"
             "    \"category\":\"send|receive|move\", (string) The transaction category. 'move' is a local (off blockchain)\n"
             "                                                transaction between accounts, and not associated with an address,\n"
@@ -1596,7 +1596,7 @@ UniValue listsinceblock(const UniValue& params, bool fHelp)
             "{\n"
             "  \"transactions\": [\n"
             "    \"account\":\"accountname\",       (string) The account name associated with the transaction. Will be \"\" for the default account.\n"
-            "    \"address\":\"altbetaddress\",    (string) The beetok address of the transaction. Not present for move transactions (category = move).\n"
+            "    \"address\":\"beetokaddress\",    (string) The beetok address of the transaction. Not present for move transactions (category = move).\n"
             "    \"category\":\"send|receive\",     (string) The transaction category. 'send' has negative amounts, 'receive' has positive amounts.\n"
             "    \"amount\": x.xxx,          (numeric) The amount in beetok. This is negative for the 'send' category, and for the 'move' category for moves \n"
             "                                          outbound. It is positive for the 'receive' category, and for the 'move' category for inbound funds.\n"
@@ -1688,7 +1688,7 @@ UniValue gettransaction(const UniValue& params, bool fHelp)
             "  \"details\" : [\n"
             "    {\n"
             "      \"account\" : \"accountname\",  (string) The account name involved in the transaction, can be \"\" for the default account.\n"
-            "      \"address\" : \"altbetaddress\",   (string) The beetok address involved in the transaction\n"
+            "      \"address\" : \"beetokaddress\",   (string) The beetok address involved in the transaction\n"
             "      \"category\" : \"send|receive\",    (string) The category, either 'send' or 'receive'\n"
             "      \"amount\" : x.xxx                  (numeric) The amount in beetok\n"
             "      \"vout\" : n,                       (numeric) the vout value\n"
@@ -1805,7 +1805,7 @@ UniValue walletpassphrase(const UniValue& params, bool fHelp)
         throw runtime_error(
             "walletpassphrase \"passphrase\" timeout ( anonymizeonly )\n"
             "\nStores the wallet decryption key in memory for 'timeout' seconds.\n"
-            "This is needed prior to performing transactions related to private keys such as sending ABETs\n"
+            "This is needed prior to performing transactions related to private keys such as sending BTOKs\n"
             "\nArguments:\n"
             "1. \"passphrase\"     (string, required) The wallet passphrase\n"
             "2. timeout            (numeric, required) The time to keep the decryption key in seconds.\n"
@@ -1815,10 +1815,10 @@ UniValue walletpassphrase(const UniValue& params, bool fHelp)
             "time that overrides the old one. A timeout of \"0\" unlocks until the wallet is closed.\n"
             "\nExamples:\n"
             "\nUnlock the wallet for 60 seconds\n" +
-            HelpExampleCli("walletpassphrase", "\"my pass abetase\" 60") +
-            "\nUnlock the wallet for 60 seconds but allow anonymization, automint, and staking only\n" + HelpExampleCli("walletpassphrase", "\"my pass abetase\" 60 true") +
+            HelpExampleCli("walletpassphrase", "\"my pass btokase\" 60") +
+            "\nUnlock the wallet for 60 seconds but allow anonymization, automint, and staking only\n" + HelpExampleCli("walletpassphrase", "\"my pass btokase\" 60 true") +
             "\nLock the wallet again (before 60 seconds)\n" + HelpExampleCli("walletlock", "") +
-            "\nAs json rpc call\n" + HelpExampleRpc("walletpassphrase", "\"my pass abetase\", 60"));
+            "\nAs json rpc call\n" + HelpExampleRpc("walletpassphrase", "\"my pass btokase\", 60"));
 
     LOCK2(cs_main, pwalletMain->cs_wallet);
 
@@ -1910,7 +1910,7 @@ UniValue walletlock(const UniValue& params, bool fHelp)
             "before being able to call any methods which require the wallet to be unlocked.\n"
             "\nExamples:\n"
             "\nSet the passphrase for 2 minutes to perform a transaction\n" +
-            HelpExampleCli("walletpassphrase", "\"my pass abetase\" 120") +
+            HelpExampleCli("walletpassphrase", "\"my pass btokase\" 120") +
             "\nPerform a send (requires passphrase set)\n" + HelpExampleCli("sendtoaddress", "\"XwnLY9Tf7Zsef8gMGL2fhWA9ZmMjt4KPwg\" 1.0") +
             "\nClear the passphrase since we are done before 2 minutes is up\n" + HelpExampleCli("walletlock", "") +
             "\nAs json rpc call\n" + HelpExampleRpc("walletlock", ""));
@@ -1944,14 +1944,14 @@ UniValue encryptwallet(const UniValue& params, bool fHelp)
             "If the wallet is already encrypted, use the walletpassphrasechange call.\n"
             "Note that this will shutdown the server.\n"
             "\nArguments:\n"
-            "1. \"passphrase\"    (string) The pass abetase to encrypt the wallet with. It must be at least 1 character, but should be long.\n"
+            "1. \"passphrase\"    (string) The pass btokase to encrypt the wallet with. It must be at least 1 character, but should be long.\n"
             "\nExamples:\n"
             "\nEncrypt you wallet\n" +
-            HelpExampleCli("encryptwallet", "\"my pass abetase\"") +
-            "\nNow set the passphrase to use the wallet, such as for signing or sending ABETs\n" + HelpExampleCli("walletpassphrase", "\"my pass abetase\"") +
-            "\nNow we can so something like sign\n" + HelpExampleCli("signmessage", "\"altbetaddress\" \"test message\"") +
+            HelpExampleCli("encryptwallet", "\"my pass btokase\"") +
+            "\nNow set the passphrase to use the wallet, such as for signing or sending BTOKs\n" + HelpExampleCli("walletpassphrase", "\"my pass btokase\"") +
+            "\nNow we can so something like sign\n" + HelpExampleCli("signmessage", "\"beetokaddress\" \"test message\"") +
             "\nNow lock the wallet again by removing the passphrase\n" + HelpExampleCli("walletlock", "") +
-            "\nAs a json rpc call\n" + HelpExampleRpc("encryptwallet", "\"my pass abetase\""));
+            "\nAs a json rpc call\n" + HelpExampleRpc("encryptwallet", "\"my pass btokase\""));
 
     LOCK2(cs_main, pwalletMain->cs_wallet);
 
@@ -1988,7 +1988,7 @@ UniValue lockunspent(const UniValue& params, bool fHelp)
             "lockunspent unlock [{\"txid\":\"txid\",\"vout\":n},...]\n"
             "\nUpdates list of temporarily unspendable outputs.\n"
             "Temporarily lock (unlock=false) or unlock (unlock=true) specified transaction outputs.\n"
-            "A locked transaction output will not be chosen by automatic coin selection, when spending ABETs.\n"
+            "A locked transaction output will not be chosen by automatic coin selection, when spending BTOKs.\n"
             "Locks are stored in memory only. Nodes start with zero locked outputs, and the locked output list\n"
             "is always cleared (by virtue of process exit) when a node stops or fails.\n"
             "Also see the listunspent call\n"
@@ -2573,7 +2573,7 @@ UniValue listmintedzerocoins(const UniValue& params, bool fHelp)
         throw JSONRPCError(RPC_WALLET_UNLOCK_NEEDED, "Error: Please enter the wallet passphrase with walletpassphrase first.");
 
     CWalletDB walletdb(pwalletMain->strWalletFile);
-    set<CMintMeta> setMints = pwalletMain->zabetTracker->ListMints(true, true, true);
+    set<CMintMeta> setMints = pwalletMain->zbtokTracker->ListMints(true, true, true);
 
     UniValue jsonList(UniValue::VARR);
     for (const CMintMeta& meta : setMints) {
@@ -2609,7 +2609,7 @@ UniValue listzerocoinamounts(const UniValue& params, bool fHelp)
     EnsureWalletIsUnlocked();
 
     CWalletDB walletdb(pwalletMain->strWalletFile);
-    set<CMintMeta> setMints = pwalletMain->zabetTracker->ListMints(true, true, true);
+    set<CMintMeta> setMints = pwalletMain->zbtokTracker->ListMints(true, true, true);
 
     std::map<libzerocoin::CoinDenomination, CAmount> spread;
     for (const auto& denom : libzerocoin::zerocoinDenomList)
@@ -2927,8 +2927,8 @@ UniValue resetmintzerocoin(const UniValue& params, bool fHelp)
 
     LOCK2(cs_main, pwalletMain->cs_wallet);
 
-    CzABETTracker* zabetTracker = pwalletMain->zabetTracker.get();
-    set<CMintMeta> setMints = zabetTracker->ListMints(false, false, true);
+    CzBTOKTracker* zbtokTracker = pwalletMain->zbtokTracker.get();
+    set<CMintMeta> setMints = zbtokTracker->ListMints(false, false, true);
     vector<CMintMeta> vMintsToFind(setMints.begin(), setMints.end());
     vector<CMintMeta> vMintsMissing;
     vector<CMintMeta> vMintsToUpdate;
@@ -2939,14 +2939,14 @@ UniValue resetmintzerocoin(const UniValue& params, bool fHelp)
     // update the meta data of mints that were marked for updating
     UniValue arrUpdated(UniValue::VARR);
     for (CMintMeta meta : vMintsToUpdate) {
-        zabetTracker->UpdateState(meta);
+        zbtokTracker->UpdateState(meta);
         arrUpdated.push_back(meta.hashPubcoin.GetHex());
     }
 
     // delete any mints that were unable to be located on the blockchain
     UniValue arrDeleted(UniValue::VARR);
     for (CMintMeta meta : vMintsMissing) {
-        zabetTracker->Archive(meta);
+        zbtokTracker->Archive(meta);
         arrDeleted.push_back(meta.hashPubcoin.GetHex()); 
     }
 
@@ -2980,8 +2980,8 @@ UniValue resetspentzerocoin(const UniValue& params, bool fHelp)
     LOCK2(cs_main, pwalletMain->cs_wallet);
 
     CWalletDB walletdb(pwalletMain->strWalletFile);
-    CzABETTracker* zabetTracker = pwalletMain->zabetTracker.get();
-    set<CMintMeta> setMints = zabetTracker->ListMints(false, false, false);
+    CzBTOKTracker* zbtokTracker = pwalletMain->zbtokTracker.get();
+    set<CMintMeta> setMints = zbtokTracker->ListMints(false, false, false);
     list<CZerocoinSpend> listSpends = walletdb.ListSpentCoins();
     list<CZerocoinSpend> listUnconfirmedSpends;
 
@@ -3003,7 +3003,7 @@ UniValue resetspentzerocoin(const UniValue& params, bool fHelp)
     for (CZerocoinSpend spend : listUnconfirmedSpends) {
         for (auto& meta : setMints) {
             if (meta.hashSerial == GetSerialHash(spend.GetSerial())) {
-                zabetTracker->SetPubcoinNotUsed(meta.hashPubcoin);
+                zbtokTracker->SetPubcoinNotUsed(meta.hashPubcoin);
                 walletdb.EraseZerocoinSpendSerialEntry(spend.GetSerial());
                 RemoveSerialFromDB(spend.GetSerial());
                 UniValue obj(UniValue::VOBJ);
@@ -3118,8 +3118,8 @@ UniValue exportzerocoins(const UniValue& params, bool fHelp)
     if (params.size() == 2)
         denomination = libzerocoin::IntToZerocoinDenomination(params[1].get_int());
 
-    CzABETTracker* zabetTracker = pwalletMain->zabetTracker.get();
-    set<CMintMeta> setMints = zabetTracker->ListMints(!fIncludeSpent, false, false);
+    CzBTOKTracker* zbtokTracker = pwalletMain->zbtokTracker.get();
+    set<CMintMeta> setMints = zbtokTracker->ListMints(!fIncludeSpent, false, false);
 
     UniValue jsonList(UniValue::VARR);
     for (const CMintMeta& meta : setMints) {
@@ -3228,7 +3228,7 @@ UniValue importzerocoins(const UniValue& params, bool fHelp)
         CZerocoinMint mint(denom, bnValue, bnRandom, bnSerial, fUsed, nVersion, &privkey);
         mint.SetTxHash(txid);
         mint.SetHeight(nHeight);
-        pwalletMain->zabetTracker->Add(mint, true);
+        pwalletMain->zbtokTracker->Add(mint, true);
         count++;
         nValue += libzerocoin::ZerocoinDenominationToAmount(denom);
     }
@@ -3313,11 +3313,11 @@ UniValue makekeypair(const UniValue& params, bool fHelp)
     return result;
 }
 
-UniValue setzabetseed(const UniValue& params, bool fHelp)
+UniValue setzbtokseed(const UniValue& params, bool fHelp)
 {
     if(fHelp || params.size() != 1)
         throw runtime_error(
-            "setzabetseed \"seed\"\n"
+            "setzbtokseed \"seed\"\n"
             "\nSet the wallet's deterministic zbtok seed to a specific value.\n" +
             HelpRequiringPassphrase() + "\n"
 
@@ -3328,15 +3328,15 @@ UniValue setzabetseed(const UniValue& params, bool fHelp)
             "\"success\" : b,  (boolean) Whether the seed was successfully set.\n"
 
             "\nExamples\n" +
-            HelpExampleCli("setzabetseed", "63f793e7895dd30d99187b35fbfb314a5f91af0add9e0a4e5877036d1e392dd5") +
-            HelpExampleRpc("setzabetseed", "63f793e7895dd30d99187b35fbfb314a5f91af0add9e0a4e5877036d1e392dd5"));
+            HelpExampleCli("setzbtokseed", "63f793e7895dd30d99187b35fbfb314a5f91af0add9e0a4e5877036d1e392dd5") +
+            HelpExampleRpc("setzbtokseed", "63f793e7895dd30d99187b35fbfb314a5f91af0add9e0a4e5877036d1e392dd5"));
 
     EnsureWalletIsUnlocked();
 
     uint256 seed;
     seed.SetHex(params[0].get_str());
 
-    CzABETWallet* zwallet = pwalletMain->getZWallet();
+    CzBTOKWallet* zwallet = pwalletMain->getZWallet();
     bool fSuccess = zwallet->SetMasterSeed(seed, true);
     if (fSuccess)
         zwallet->SyncWithChain();
@@ -3347,11 +3347,11 @@ UniValue setzabetseed(const UniValue& params, bool fHelp)
     return ret;
 }
 
-UniValue getzabetseed(const UniValue& params, bool fHelp)
+UniValue getzbtokseed(const UniValue& params, bool fHelp)
 {
     if(fHelp || !params.empty())
         throw runtime_error(
-            "getzabetseed\n"
+            "getzbtokseed\n"
             "\nCheck archived zBTOK list to see if any mints were added to the blockchain.\n" +
             HelpRequiringPassphrase() + "\n"
 
@@ -3359,11 +3359,11 @@ UniValue getzabetseed(const UniValue& params, bool fHelp)
             "\"seed\" : s,  (string) The deterministic zBTOK seed.\n"
 
             "\nExamples\n" +
-            HelpExampleCli("getzabetseed", "") + HelpExampleRpc("getzabetseed", ""));
+            HelpExampleCli("getzbtokseed", "") + HelpExampleRpc("getzbtokseed", ""));
 
     EnsureWalletIsUnlocked();
 
-    CzABETWallet* zwallet = pwalletMain->getZWallet();
+    CzBTOKWallet* zwallet = pwalletMain->getZWallet();
     uint256 seed = zwallet->GetMasterSeed();
 
     UniValue ret(UniValue::VOBJ);
@@ -3402,7 +3402,7 @@ UniValue generatemintlist(const UniValue& params, bool fHelp)
 
     int nCount = params[0].get_int();
     int nRange = params[1].get_int();
-    CzABETWallet* zwallet = pwalletMain->zwalletMain;
+    CzBTOKWallet* zwallet = pwalletMain->zwalletMain;
 
     UniValue arrRet(UniValue::VARR);
     for (int i = nCount; i < nCount + nRange; i++) {
@@ -3421,28 +3421,28 @@ UniValue generatemintlist(const UniValue& params, bool fHelp)
     return arrRet;
 }
 
-UniValue dzabetstate(const UniValue& params, bool fHelp) {
+UniValue dzbtokstate(const UniValue& params, bool fHelp) {
     if (fHelp || params.size() != 0)
         throw runtime_error(
-                "dzabetstate\n"
+                "dzbtokstate\n"
                         "\nThe current state of the mintpool of the deterministic zBTOK wallet.\n" +
                 HelpRequiringPassphrase() + "\n"
 
                         "\nExamples\n" +
                 HelpExampleCli("mintpoolstatus", "") + HelpExampleRpc("mintpoolstatus", ""));
 
-    CzABETWallet* zwallet = pwalletMain->zwalletMain;
+    CzBTOKWallet* zwallet = pwalletMain->zwalletMain;
     UniValue obj(UniValue::VOBJ);
     int nCount, nCountLastUsed;
     zwallet->GetState(nCount, nCountLastUsed);
-    obj.push_back(Pair("dzabet_count", nCount));
+    obj.push_back(Pair("dzbtok_count", nCount));
     obj.push_back(Pair("mintpool_count", nCountLastUsed));
 
     return obj;
 }
 
 
-void static SearchThread(CzABETWallet* zwallet, int nCountStart, int nCountEnd)
+void static SearchThread(CzBTOKWallet* zwallet, int nCountStart, int nCountEnd)
 {
     LogPrintf("%s: start=%d end=%d\n", __func__, nCountStart, nCountEnd);
     CWalletDB walletDB(pwalletMain->strWalletFile);
@@ -3459,7 +3459,7 @@ void static SearchThread(CzABETWallet* zwallet, int nCountStart, int nCountEnd)
             CBigNum bnSerial;
             CBigNum bnRandomness;
             CKey key;
-            zwallet->SeedToZABET(zerocoinSeed, bnValue, bnSerial, bnRandomness, key);
+            zwallet->SeedToZBTOK(zerocoinSeed, bnValue, bnSerial, bnRandomness, key);
 
             uint256 hashPubcoin = GetPubCoinHash(bnValue);
             zwallet->AddToMintPool(make_pair(hashPubcoin, i), true);
@@ -3472,11 +3472,11 @@ void static SearchThread(CzABETWallet* zwallet, int nCountStart, int nCountEnd)
     }
 }
 
-UniValue searchdzabet(const UniValue& params, bool fHelp)
+UniValue searchdzbtok(const UniValue& params, bool fHelp)
 {
     if(fHelp || params.size() != 3)
         throw runtime_error(
-            "searchdzabet\n"
+            "searchdzbtok\n"
             "\nMake an extended search for deterministically generated zBTOK that have not yet been recognized by the wallet.\n" +
             HelpRequiringPassphrase() + "\n"
 
@@ -3486,7 +3486,7 @@ UniValue searchdzabet(const UniValue& params, bool fHelp)
             "3. \"threads\"     (numeric) How many threads should this operation consume.\n"
 
             "\nExamples\n" +
-            HelpExampleCli("searchdzabet", "1, 100, 2") + HelpExampleRpc("searchdzabet", "1, 100, 2"));
+            HelpExampleCli("searchdzbtok", "1, 100, 2") + HelpExampleRpc("searchdzbtok", "1, 100, 2"));
 
     EnsureWalletIsUnlocked();
 
@@ -3500,9 +3500,9 @@ UniValue searchdzabet(const UniValue& params, bool fHelp)
 
     int nThreads = params[2].get_int();
 
-    CzABETWallet* zwallet = pwalletMain->zwalletMain;
+    CzBTOKWallet* zwallet = pwalletMain->zwalletMain;
 
-    boost::thread_group* dzabetThreads = new boost::thread_group();
+    boost::thread_group* dzbtokThreads = new boost::thread_group();
     int nRangePerThread = nRange / nThreads;
 
     int nPrevThreadEnd = nCount - 1;
@@ -3510,12 +3510,12 @@ UniValue searchdzabet(const UniValue& params, bool fHelp)
         int nStart = nPrevThreadEnd + 1;;
         int nEnd = nStart + nRangePerThread;
         nPrevThreadEnd = nEnd;
-        dzabetThreads->create_thread(boost::bind(&SearchThread, zwallet, nStart, nEnd));
+        dzbtokThreads->create_thread(boost::bind(&SearchThread, zwallet, nStart, nEnd));
     }
 
-    dzabetThreads->join_all();
+    dzbtokThreads->join_all();
 
-    zwallet->RemoveMintsFromPool(pwalletMain->zabetTracker->GetSerialHashes());
+    zwallet->RemoveMintsFromPool(pwalletMain->zbtokTracker->GetSerialHashes());
     zwallet->SyncWithChain(false);
 
     //todo: better response

@@ -172,8 +172,8 @@
         <translation>Confirmar criptografia de carteira</translation>
     </message>
     <message>
-        <source>Beetok will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your ABETs from being stolen by malware infecting your computer.</source>
-        <translation>Beetok vai fechar agora para finalizar o processo de criptografia. Lembre-se que encriptar sua carteira não pode proteger totalmente suas ABETs de serem roubadas por malwares infectando seu computador.</translation>
+        <source>Beetok will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your BTOKs from being stolen by malware infecting your computer.</source>
+        <translation>Beetok vai fechar agora para finalizar o processo de criptografia. Lembre-se que encriptar sua carteira não pode proteger totalmente suas BTOKs de serem roubadas por malwares infectando seu computador.</translation>
     </message>
     <message>
         <source>Are you sure you wish to encrypt your wallet?</source>
@@ -2465,8 +2465,8 @@ https://www.transifex.com/beetok-project/beetok-project-translations</translatio
         <translation>Tempo de confirmação:</translation>
     </message>
     <message>
-        <source>If the custom fee is set to 1000 uABETs and the transaction is only 250 bytes, then "per kilobyte" only pays 250 uABETs in fee,&lt;br /&gt;while "at least" pays 1000 uABETs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
-        <translation>Se a taxa padrão estiver definida para 1000 uABETs e a transação for somente de 250 bytes, então "por kilobyte" pagará somente 250 uABETs em taxa,&lt;br /&gt; pagará pelo menos 1000 uABETs. Para transações maiores que um kilobyte ambas pagam por kilobyte.</translation>
+        <source>If the custom fee is set to 1000 uBTOKs and the transaction is only 250 bytes, then "per kilobyte" only pays 250 uBTOKs in fee,&lt;br /&gt;while "at least" pays 1000 uBTOKs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
+        <translation>Se a taxa padrão estiver definida para 1000 uBTOKs e a transação for somente de 250 bytes, então "por kilobyte" pagará somente 250 uBTOKs em taxa,&lt;br /&gt; pagará pelo menos 1000 uBTOKs. Para transações maiores que um kilobyte ambas pagam por kilobyte.</translation>
     </message>
     <message>
         <source>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks.&lt;br /&gt;But be aware that this can end up in a never confirming transaction once there is more demand for Beetok transactions than the network can process.</source>
@@ -3401,7 +3401,7 @@ https://www.transifex.com/beetok-project/beetok-project-translations</translatio
     </message>
 </context>
 <context>
-    <name>ZAbetControlDialog</name>
+    <name>ZBtokControlDialog</name>
     <message>
         <source>0</source>
         <translation>0</translation>

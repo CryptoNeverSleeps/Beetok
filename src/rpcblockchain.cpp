@@ -119,12 +119,12 @@ UniValue blockToJSON(const CBlock& block, const CBlockIndex* blockindex, bool tx
 
     result.push_back(Pair("moneysupply",ValueFromAmount(blockindex->nMoneySupply)));
 
-    UniValue zabetObj(UniValue::VOBJ);
+    UniValue zbtokObj(UniValue::VOBJ);
     for (auto denom : libzerocoin::zerocoinDenomList) {
-        zabetObj.push_back(Pair(to_string(denom), ValueFromAmount(blockindex->mapZerocoinSupply.at(denom) * (denom*COIN))));
+        zbtokObj.push_back(Pair(to_string(denom), ValueFromAmount(blockindex->mapZerocoinSupply.at(denom) * (denom*COIN))));
     }
-    zabetObj.push_back(Pair("total", ValueFromAmount(blockindex->GetZerocoinSupply())));
-    result.push_back(Pair("zABETsupply", zabetObj));
+    zbtokObj.push_back(Pair("total", ValueFromAmount(blockindex->GetZerocoinSupply())));
+    result.push_back(Pair("zBTOKsupply", zbtokObj));
 
     return result;
 }
@@ -309,7 +309,7 @@ UniValue getblock(const UniValue& params, bool fHelp)
             "  \"previousblockhash\" : \"hash\",  (string) The hash of the previous block\n"
             "  \"nextblockhash\" : \"hash\"       (string) The hash of the next block\n"
             "  \"moneysupply\" : \"supply\"       (numeric) The money supply when this block was added to the blockchain\n"
-            "  \"zABETsupply\" :\n"
+            "  \"zBTOKsupply\" :\n"
             "  {\n"
             "     \"1\" : n,            (numeric) supply of 1 zBTOK denomination\n"
             "     \"5\" : n,            (numeric) supply of 5 zBTOK denomination\n"
@@ -466,7 +466,7 @@ UniValue gettxout(const UniValue& params, bool fHelp)
             "     \"reqSigs\" : n,          (numeric) Number of required signatures\n"
             "     \"type\" : \"pubkeyhash\", (string) The type, e.g. pubkeyhash\n"
             "     \"addresses\" : [          (array of string) array of beetok addresses\n"
-            "     \"altbetaddress\"   	 	(string) beetok address\n"
+            "     \"beetokaddress\"   	 	(string) beetok address\n"
             "        ,...\n"
             "     ]\n"
             "  },\n"

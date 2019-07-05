@@ -89,10 +89,10 @@ void OptionsModel::Init()
         settings.setValue("nPreferredDenom", 0);
     nPreferredDenom = settings.value("nPreferredDenom", "0").toLongLong();
 
-    if (!settings.contains("nAnonymizeAltbetAmount"))
-        settings.setValue("nAnonymizeAltbetAmount", 1000);
+    if (!settings.contains("nAnonymizeBeetokAmount"))
+        settings.setValue("nAnonymizeBeetokAmount", 1000);
 
-    nAnonymizeAltbetAmount = settings.value("nAnonymizeAltbetAmount").toLongLong();
+    nAnonymizeBeetokAmount = settings.value("nAnonymizeBeetokAmount").toLongLong();
 
     if (!settings.contains("fShowMasternodesTab"))
         settings.setValue("fShowMasternodesTab", masternodeConfig.getCount());
@@ -166,8 +166,8 @@ void OptionsModel::Init()
         SoftSetArg("-zeromintpercentage", settings.value("nZeromintPercentage").toString().toStdString());
     if (settings.contains("nPreferredDenom"))
         SoftSetArg("-preferredDenom", settings.value("nPreferredDenom").toString().toStdString());
-    if (settings.contains("nAnonymizeAltbetAmount"))
-        SoftSetArg("-anonymizealtbetamount", settings.value("nAnonymizeAltbetAmount").toString().toStdString());
+    if (settings.contains("nAnonymizeBeetokAmount"))
+        SoftSetArg("-anonymizebeetokamount", settings.value("nAnonymizeBeetokAmount").toString().toStdString());
 
     language = settings.value("language").toString();
 }
@@ -258,8 +258,8 @@ QVariant OptionsModel::data(const QModelIndex& index, int role) const
             return QVariant(nZeromintPercentage);
         case ZeromintPrefDenom:
             return QVariant(nPreferredDenom);
-        case AnonymizeAltbetAmount:
-            return QVariant(nAnonymizeAltbetAmount);
+        case AnonymizeBeetokAmount:
+            return QVariant(nAnonymizeBeetokAmount);
         case Listen:
             return settings.value("fListen");
         default:
@@ -388,10 +388,10 @@ bool OptionsModel::setData(const QModelIndex& index, const QVariant& value, int 
             emit hideZeroBalancesChanged(fHideZeroBalances);
             break;
 
-        case AnonymizeAltbetAmount:
-            nAnonymizeAltbetAmount = value.toInt();
-            settings.setValue("nAnonymizeAltbetAmount", nAnonymizeAltbetAmount);
-            emit anonymizeAltbetAmountChanged(nAnonymizeAltbetAmount);
+        case AnonymizeBeetokAmount:
+            nAnonymizeBeetokAmount = value.toInt();
+            settings.setValue("nAnonymizeBeetokAmount", nAnonymizeBeetokAmount);
+            emit anonymizeBeetokAmountChanged(nAnonymizeBeetokAmount);
             break;
         case CoinControlFeatures:
             fCoinControlFeatures = value.toBool();

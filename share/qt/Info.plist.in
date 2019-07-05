@@ -46,7 +46,7 @@
       <key>CFBundleTypeRole</key>
       <string>Editor</string>
       <key>CFBundleURLName</key>
-      <string>io.beetok.AltbetPayment</string>
+      <string>io.beetok.BeetokPayment</string>
       <key>CFBundleURLSchemes</key>
       <array>
         <string>beetok</string>
@@ -71,7 +71,7 @@
         <string>application/x-beetok-payment-request</string>
         <key>public.filename-extension</key>
         <array>
-          <string>altbetpaymentrequest</string>
+          <string>beetokpaymentrequest</string>
         </array>
       </dict>
     </dict>

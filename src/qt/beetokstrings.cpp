@@ -8,7 +8,7 @@
 #else
 #define UNUSED
 #endif
-static const char UNUSED *altbet_strings[] = {
+static const char UNUSED *beetok_strings[] = {
 QT_TRANSLATE_NOOP("beetok-core", " mints deleted\n"),
 QT_TRANSLATE_NOOP("beetok-core", " mints updated, "),
 QT_TRANSLATE_NOOP("beetok-core", " unconfirmed transactions removed\n"),
@@ -170,11 +170,11 @@ QT_TRANSLATE_NOOP("beetok-core", ""
 "the OpenSSL Toolkit <https://www.openssl.org/> and cryptographic software "
 "written by Eric Young and UPnP software written by Thomas Bernard."),
 QT_TRANSLATE_NOOP("beetok-core", ""
-"To use altbetd, or the -server option to beetok-qt, you must set an rpcpassword "
+"To use beetokd, or the -server option to beetok-qt, you must set an rpcpassword "
 "in the configuration file:\n"
 "%s\n"
 "It is recommended you use the following random password:\n"
-"rpcuser=altbetrpc\n"
+"rpcuser=beetokrpc\n"
 "rpcpassword=%s\n"
 "(you do not need to remember this password)\n"
 "The username and password MUST NOT be the same.\n"

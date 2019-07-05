@@ -7,7 +7,7 @@ Beetok Core version 1.3.1 is now available from:
 
 Please report bugs using the issue tracker at github:
 
-  https://github.com/altbetproject/beetok/issues
+  https://github.com/beetokproject/beetok/issues
 
 
 How to Upgrade
@@ -16,7 +16,7 @@ How to Upgrade
 If you are running an older version, shut it down. Wait until it has completely
 shut down (which might take a few minutes for older versions), then run the
 installer (on Windows) or just copy over /Applications/Beetok-Qt (on Mac) or
-altbetd/beetok-qt (on Linux).
+beetokd/beetok-qt (on Linux).
 
 
 1.3.1 changelog

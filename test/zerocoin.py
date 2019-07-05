@@ -8,7 +8,7 @@
 # Does the following:
 #   a) creates 3 nodes, with an empty chain (no blocks).
 #   b) node0 mines a block
-#   c) node1 mines 32 blocks, so now node 0 has 60001abet, node 1 has 4250abet, node2 has none.
+#   c) node1 mines 32 blocks, so now node 0 has 60001btok, node 1 has 4250btok, node2 has none.
 #   d) node0 sends 601 btok to node2, in two transactions (301 btok, then 300 btok).
 #   e) node0 mines a block, collects the fee on the second transaction
 #   f) node1 mines 16 blocks, to mature node0's just-mined block

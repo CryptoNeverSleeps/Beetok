@@ -176,7 +176,7 @@
         <translation>Потвърдете шифрирането на портфейла</translation>
     </message>
     <message>
-        <source>Beetok will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your ABETs from being stolen by malware infecting your computer.</source>
+        <source>Beetok will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your BTOKs from being stolen by malware infecting your computer.</source>
         <translation>Beetok сега ще се затвори, за да довърши процеса по шифриране. Запомнете, че шифрирането на вашия портфейл не може напълно да защити вашия Beetok от това, да бъде откраднат чрез злонамерен софутуер, инфектирал вашия компютър.</translation>
     </message>
     <message>
@@ -3179,12 +3179,12 @@ Please be patient...</source>
         <translation>Автоматично избрани монети</translation>
     </message>
     <message>
-        <source>If the custom fee is set to 1000 uABETs and the transaction is only 250 bytes, then "per kilobyte" only pays 250 uABETs in fee,&lt;br /&gt;while "at least" pays 1000 uABETs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
-        <translation>Ако собствената такса е настроена на 1000 uABET и превода е само 250 байта, то тогава "за килобайт" само плаща 250 uABET входяща такса, &lt;br /&gt;докато "минимална сума" плаща 1000 uABET. За транзакции по-големи от килобайт, и двете плащат за килобайт.</translation>
+        <source>If the custom fee is set to 1000 uBTOKs and the transaction is only 250 bytes, then "per kilobyte" only pays 250 uBTOKs in fee,&lt;br /&gt;while "at least" pays 1000 uBTOKs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
+        <translation>Ако собствената такса е настроена на 1000 uBTOK и превода е само 250 байта, то тогава "за килобайт" само плаща 250 uBTOK входяща такса, &lt;br /&gt;докато "минимална сума" плаща 1000 uBTOK. За транзакции по-големи от килобайт, и двете плащат за килобайт.</translation>
     </message>
     <message>
-        <source>If the custom fee is set to 1000 uABETs and the transaction is only 250 bytes, then "per kilobyte" only pays 250 uABETs in fee,&lt;br /&gt;while "total at least" pays 1000 uABETs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
-        <translation>Ако собствената такса е настроена на 1000 uABET и превода е само 250 байта, то тогава "за килобайт" само плаща 250 uABET входяща такса,&lt;br /&gt; докато "минимална сума" плаща 1000 uABET. За транзакции по-големи от килобайт, и двете плащат за килобайт.</translation>
+        <source>If the custom fee is set to 1000 uBTOKs and the transaction is only 250 bytes, then "per kilobyte" only pays 250 uBTOKs in fee,&lt;br /&gt;while "total at least" pays 1000 uBTOKs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
+        <translation>Ако собствената такса е настроена на 1000 uBTOK и превода е само 250 байта, то тогава "за килобайт" само плаща 250 uBTOK входяща такса,&lt;br /&gt; докато "минимална сума" плаща 1000 uBTOK. За транзакции по-големи от килобайт, и двете плащат за килобайт.</translation>
     </message>
     <message>
         <source>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks.&lt;br /&gt;But be aware that this can end up in a never confirming transaction once there is more demand for Beetok transactions than the network can process.</source>
@@ -4259,7 +4259,7 @@ Please be patient...</source>
     </message>
 </context>
 <context>
-    <name>ZAbetControlDialog</name>
+    <name>ZBtokControlDialog</name>
     <message>
         <source>Select zBtok to Spend</source>
         <translation>Изберете zBTOK за Изпращане</translation>

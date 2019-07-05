@@ -488,7 +488,7 @@ SOURCES += src/activemasternode.cpp \
            src/qt/csvmodelwriter.cpp \
            src/qt/obfuscationconfig.cpp \
            src/qt/beetok.cpp \
-           src/qt/altbetstrings.cpp \
+           src/qt/beetokstrings.cpp \
            src/qt/editaddressdialog.cpp \
            src/qt/guiutil.cpp \
            src/qt/intro.cpp \
@@ -566,7 +566,7 @@ SOURCES += src/activemasternode.cpp \
            src/test/sighash_tests.cpp \
            src/test/sigopcount_tests.cpp \
            src/test/skiplist_tests.cpp \
-           src/test/test_altbet.cpp \
+           src/test/test_beetok.cpp \
            src/test/timedata_tests.cpp \
            src/test/transaction_tests.cpp \
            src/test/uint256_tests.cpp \
@@ -657,21 +657,21 @@ SOURCES += src/activemasternode.cpp \
            src/leveldb/helpers/memenv/memenv.cc \
            src/leveldb/helpers/memenv/memenv_test.cc \
            src/secp256k1/src/java/org_bitcoin_NativeSecp256k1.c
-RESOURCES += src/qt/beetok.qrc src/qt/altbet_locale.qrc
+RESOURCES += src/qt/beetok.qrc src/qt/beetok_locale.qrc
 
-TRANSLATIONS += src/qt/locale/altbet_bg.ts \
-                src/qt/locale/altbet_de.ts \
-                src/qt/locale/altbet_en.ts \
-                src/qt/locale/altbet_es.ts \
-                src/qt/locale/altbet_fi.ts \
-                src/qt/locale/altbet_fr.ts \
-                src/qt/locale/altbet_it.ts \
-                src/qt/locale/altbet_ja.ts \
-                src/qt/locale/altbet_pl.ts \
-                src/qt/locale/altbet_pt.ts \
-                src/qt/locale/altbet_ru.ts \
-                src/qt/locale/altbet_sk.ts \
-                src/qt/locale/altbet_sv.ts \
-                src/qt/locale/altbet_vi.ts \
-                src/qt/locale/altbet_zh_CN.ts \
-                src/qt/locale/altbet_zh_TW.ts
+TRANSLATIONS += src/qt/locale/beetok_bg.ts \
+                src/qt/locale/beetok_de.ts \
+                src/qt/locale/beetok_en.ts \
+                src/qt/locale/beetok_es.ts \
+                src/qt/locale/beetok_fi.ts \
+                src/qt/locale/beetok_fr.ts \
+                src/qt/locale/beetok_it.ts \
+                src/qt/locale/beetok_ja.ts \
+                src/qt/locale/beetok_pl.ts \
+                src/qt/locale/beetok_pt.ts \
+                src/qt/locale/beetok_ru.ts \
+                src/qt/locale/beetok_sk.ts \
+                src/qt/locale/beetok_sv.ts \
+                src/qt/locale/beetok_vi.ts \
+                src/qt/locale/beetok_zh_CN.ts \
+                src/qt/locale/beetok_zh_TW.ts

@@ -17,13 +17,13 @@ BEGIN
         BLOCK "040904E4" // U.S. English - multilingual (hex)
         BEGIN
             VALUE "CompanyName",        "Beetok"
-            VALUE "FileDescription",    "altbetd (OSS daemon/client for Beetok)"
+            VALUE "FileDescription",    "beetokd (OSS daemon/client for Beetok)"
             VALUE "FileVersion",        VER_FILEVERSION_STR
-            VALUE "InternalName",       "altbetd"
+            VALUE "InternalName",       "beetokd"
             VALUE "LegalCopyright",     COPYRIGHT_STR
             VALUE "LegalTrademarks1",   "Distributed under the MIT/X11 software license, see the accompanying file COPYING or http://www.opensource.org/licenses/mit-license.php."
-            VALUE "OriginalFilename",   "altbetd.exe"
-            VALUE "ProductName",        "altbetd"
+            VALUE "OriginalFilename",   "beetokd.exe"
+            VALUE "ProductName",        "beetokd"
             VALUE "ProductVersion",     VER_PRODUCTVERSION_STR
         END
     END

@@ -80,7 +80,7 @@ noinst_PROGRAMS =
 TESTS =
 
 if BUILD_BITCOIND
-  bin_PROGRAMS += altbetd
+  bin_PROGRAMS += beetokd
 endif
 
 if BUILD_BITCOIN_UTILS
@@ -195,8 +195,8 @@ BITCOIN_CORE_H = \
   version.h \
   wallet.h \
   wallet_ismine.h \
-  zabettracker.h \
-  zabetwallet.h \
+  zbtoktracker.h \
+  zbtokwallet.h \
   walletdb.h \
   crypter.h \
   rpcwallet.h \
@@ -211,7 +211,7 @@ obj/build.h: FORCE
 	  "$(abs_top_srcdir)"
 libbitcoin_util_a-clientversion.$(OBJEXT): obj/build.h
 
-# server: shared between altbetd and beetok-qt
+# server: shared between beetokd and beetok-qt
 libbitcoin_server_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(MINIUPNPC_CPPFLAGS) $(EVENT_CFLAGS) $(EVENT_PTHREADS_CFLAGS)
 libbitcoin_server_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 libbitcoin_server_a_SOURCES = \
@@ -257,7 +257,7 @@ libbitcoin_zmq_a_SOURCES = \
   zmq/zmqpublishnotifier.cpp
 endif
 
-# wallet: shared between altbetd and beetok-qt, but only linked
+# wallet: shared between beetokd and beetok-qt, but only linked
 # when wallet enabled
 libbitcoin_wallet_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
 libbitcoin_wallet_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
@@ -285,8 +285,8 @@ libbitcoin_wallet_a_SOURCES = \
   wallet.cpp \
   wallet_ismine.cpp \
   walletdb.cpp \
-  zabetwallet.cpp \
-  zabettracker.cpp \
+  zbtokwallet.cpp \
+  zbtoktracker.cpp \
   authhelper.cpp \
   rpcwallet.cpp \
   db.cpp \
@@ -355,7 +355,7 @@ libzerocoin_libbitcoin_zerocoin_a_SOURCES = \
   libzerocoin/Params.cpp \
   libzerocoin/SerialNumberSignatureOfKnowledge.cpp
 
-# common: shared between altbetd, and beetok-qt and non-server tools
+# common: shared between beetokd, and beetok-qt and non-server tools
 libbitcoin_common_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
 libbitcoin_common_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 libbitcoin_common_a_SOURCES = \
@@ -432,16 +432,16 @@ libbitcoin_cli_a_SOURCES = \
 nodist_libbitcoin_util_a_SOURCES = $(srcdir)/obj/build.h
 #
 
-# altbetd binary #
-altbetd_SOURCES = altbetd.cpp
-altbetd_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
-altbetd_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-altbetd_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+# beetokd binary #
+beetokd_SOURCES = beetokd.cpp
+beetokd_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
+beetokd_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+beetokd_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if TARGET_WINDOWS
-altbetd_SOURCES += altbetd-res.rc
+beetokd_SOURCES += beetokd-res.rc
 endif
-altbetd_LDADD = \
+beetokd_LDADD = \
   $(LIBBITCOIN_SERVER) \
   $(LIBBITCOIN_COMMON) \
   $(LIBUNIVALUE) \
@@ -454,38 +454,38 @@ altbetd_LDADD = \
   $(LIBMEMENV) \
   $(LIBSECP256K1)
 
-altbetd_LDADD += $(BOOST_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS) $(ZMQ_LIBS)
+beetokd_LDADD += $(BOOST_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS) $(ZMQ_LIBS)
 
 # beetok-cli binary #
-altbet_cli_SOURCES = beetok-cli.cpp
-altbet_cli_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(EVENT_CFLAGS)
-altbet_cli_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-altbet_cli_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+beetok_cli_SOURCES = beetok-cli.cpp
+beetok_cli_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(EVENT_CFLAGS)
+beetok_cli_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+beetok_cli_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if TARGET_WINDOWS
-altbet_cli_SOURCES += beetok-cli-res.rc
+beetok_cli_SOURCES += beetok-cli-res.rc
 endif
 
-altbet_cli_LDADD = \
+beetok_cli_LDADD = \
   $(LIBBITCOIN_CLI) \
   $(LIBUNIVALUE) \
   $(LIBBITCOIN_UTIL) \
   $(LIBBITCOIN_CRYPTO)
 
-altbet_cli_LDADD += $(BOOST_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(EVENT_LIBS)
+beetok_cli_LDADD += $(BOOST_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(EVENT_LIBS)
 #
 
 # beetok-tx binary #
-altbet_tx_SOURCES = beetok-tx.cpp
-altbet_tx_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
-altbet_tx_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-altbet_tx_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+beetok_tx_SOURCES = beetok-tx.cpp
+beetok_tx_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
+beetok_tx_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+beetok_tx_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if TARGET_WINDOWS
-altbet_tx_SOURCES += beetok-tx-res.rc
+beetok_tx_SOURCES += beetok-tx-res.rc
 endif
 
-altbet_tx_LDADD = \
+beetok_tx_LDADD = \
   $(LIBUNIVALUE) \
   $(LIBBITCOIN_COMMON) \
   $(LIBBITCOIN_ZEROCOIN) \
@@ -493,7 +493,7 @@ altbet_tx_LDADD = \
   $(LIBBITCOIN_CRYPTO) \
   $(LIBSECP256K1)
 
-altbet_tx_LDADD += $(BOOST_LIBS) $(CRYPTO_LIBS)
+beetok_tx_LDADD += $(BOOST_LIBS) $(CRYPTO_LIBS)
 #
 
 # bitcoinconsensus library #

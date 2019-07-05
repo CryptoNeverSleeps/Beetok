@@ -50,12 +50,12 @@
         <file alias="tx_input">res/icons/tx_input.png</file>
         <file alias="tx_output">res/icons/tx_output.png</file>
         <file alias="tx_inout">res/icons/tx_inout.png</file>
-        <file alias="unit_altbet">res/icons/unit_altbet.png</file>
-        <file alias="unit_maltbet">res/icons/unit_maltbet.png</file>
-        <file alias="unit_ualtbet">res/icons/unit_ualtbet.png</file>
-        <file alias="unit_taltbet">res/icons/unit_taltbet.png</file>
-        <file alias="unit_tmaltbet">res/icons/unit_tmaltbet.png</file>
-        <file alias="unit_tualtbet">res/icons/unit_tualtbet.png</file>
+        <file alias="unit_beetok">res/icons/unit_beetok.png</file>
+        <file alias="unit_mbeetok">res/icons/unit_mbeetok.png</file>
+        <file alias="unit_ubeetok">res/icons/unit_ubeetok.png</file>
+        <file alias="unit_tbeetok">res/icons/unit_tbeetok.png</file>
+        <file alias="unit_tmbeetok">res/icons/unit_tmbeetok.png</file>
+        <file alias="unit_tubeetok">res/icons/unit_tubeetok.png</file>
         <file alias="lock_closed">res/icons/lock_closed.png</file>
         <file alias="lock_open">res/icons/lock_open.png</file>
         <file alias="key">res/icons/key.png</file>
@@ -71,7 +71,7 @@
     </qresource>
     <qresource prefix="/images">
         <file alias="about">res/images/about.png</file>
-        <file alias="altbet_logo_horizontal">res/images/altbet_logo_horizontal.png</file>
+        <file alias="beetok_logo_horizontal">res/images/beetok_logo_horizontal.png</file>
         <file alias="downArrow">res/images/downArrow.png</file>
         <file alias="upArrow">res/images/upArrow.png</file>
         <file alias="downArrow_small_white">res/images/downArrow_small.png</file>

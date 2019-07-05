@@ -2,8 +2,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "zabetcontroldialog.h"
-#include "ui_zabetcontroldialog.h"
+#include "zbtokcontroldialog.h"
+#include "ui_zbtokcontroldialog.h"
 
 #include "accumulators.h"
 #include "main.h"
@@ -12,12 +12,12 @@
 using namespace std;
 using namespace libzerocoin;
 
-std::set<std::string> ZAbetControlDialog::setSelectedMints;
-std::set<CMintMeta> ZAbetControlDialog::setMints;
+std::set<std::string> ZBtokControlDialog::setSelectedMints;
+std::set<CMintMeta> ZBtokControlDialog::setMints;
 
-ZAbetControlDialog::ZAbetControlDialog(QWidget *parent) :
+ZBtokControlDialog::ZBtokControlDialog(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::ZAbetControlDialog),
+    ui(new Ui::ZBtokControlDialog),
     model(0)
 {
     ui->setupUi(this);
@@ -31,19 +31,19 @@ ZAbetControlDialog::ZAbetControlDialog(QWidget *parent) :
     connect(ui->pushButtonAll, SIGNAL(clicked()), this, SLOT(ButtonAllClicked()));
 }
 
-ZAbetControlDialog::~ZAbetControlDialog()
+ZBtokControlDialog::~ZBtokControlDialog()
 {
     delete ui;
 }
 
-void ZAbetControlDialog::setModel(WalletModel *model)
+void ZBtokControlDialog::setModel(WalletModel *model)
 {
     this->model = model;
     updateList();
 }
 
 //Update the tree widget
-void ZAbetControlDialog::updateList()
+void ZBtokControlDialog::updateList()
 {
     // need to prevent the slot from being called each time something is changed
     ui->treeWidget->blockSignals(true);
@@ -127,7 +127,7 @@ void ZAbetControlDialog::updateList()
 }
 
 // Update the list when a checkbox is clicked
-void ZAbetControlDialog::updateSelection(QTreeWidgetItem* item, int column)
+void ZBtokControlDialog::updateSelection(QTreeWidgetItem* item, int column)
 {
     // only want updates from non top level items that are available to spend
     if (item->parent() && column == COLUMN_CHECKBOX && !item->isDisabled()){
@@ -149,7 +149,7 @@ void ZAbetControlDialog::updateSelection(QTreeWidgetItem* item, int column)
 }
 
 // Update the Quantity and Amount display
-void ZAbetControlDialog::updateLabels()
+void ZBtokControlDialog::updateLabels()
 {
     int64_t nAmount = 0;
     for (const CMintMeta& mint : setMints) {
@@ -158,14 +158,14 @@ void ZAbetControlDialog::updateLabels()
     }
 
     //update this dialog's labels
-    ui->labelZAbet_int->setText(QString::number(nAmount));
+    ui->labelZBtok_int->setText(QString::number(nAmount));
     ui->labelQuantity_int->setText(QString::number(setSelectedMints.size()));
 
     //update PrivacyDialog labels
-    privacyDialog->setZAbetControlLabels(nAmount, setSelectedMints.size());
+    privacyDialog->setZBtokControlLabels(nAmount, setSelectedMints.size());
 }
 
-std::vector<CMintMeta> ZAbetControlDialog::GetSelectedMints()
+std::vector<CMintMeta> ZBtokControlDialog::GetSelectedMints()
 {
     std::vector<CMintMeta> listReturn;
     for (const CMintMeta& mint : setMints) {
@@ -177,7 +177,7 @@ std::vector<CMintMeta> ZAbetControlDialog::GetSelectedMints()
 }
 
 // select or deselect all of the mints
-void ZAbetControlDialog::ButtonAllClicked()
+void ZBtokControlDialog::ButtonAllClicked()
 {
     ui->treeWidget->blockSignals(true);
     Qt::CheckState state = Qt::Checked;

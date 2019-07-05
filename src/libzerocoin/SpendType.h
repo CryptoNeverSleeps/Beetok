@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ALTBET_SPENDTYPE_H
-#define ALTBET_SPENDTYPE_H
+#ifndef BEETOK_SPENDTYPE_H
+#define BEETOK_SPENDTYPE_H
 
 #include <cstdint>
 

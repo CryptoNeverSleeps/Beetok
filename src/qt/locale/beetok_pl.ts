@@ -583,7 +583,7 @@
     </message>
     <message>
         <source>Open a Beetok: URI or payment request</source>
-        <translation>OtwórzABETX: URI i żądanie zapłaty</translation>
+        <translation>OtwórzBTOKX: URI i żądanie zapłaty</translation>
     </message>
     <message>
         <source>&amp;Blockchain explorer</source>
@@ -2027,7 +2027,7 @@ https://www.transifex.com/beetok-project/beetok-project-translations </translati
     </message>
     </context>
 <context>
-    <name>ZAbetControlDialog</name>
+    <name>ZBtokControlDialog</name>
     <message>
         <source>0</source>
         <translation>0</translation>

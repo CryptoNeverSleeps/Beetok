@@ -1,10 +1,10 @@
 Sample configuration files for:
 
-SystemD: altbetd.service
-Upstart: altbetd.conf
-OpenRC:  altbetd.openrc
-         altbetd.openrcconf
-CentOS:  altbetd.init
+SystemD: beetokd.service
+Upstart: beetokd.conf
+OpenRC:  beetokd.openrc
+         beetokd.openrcconf
+CentOS:  beetokd.init
 
 have been made available to assist packagers in creating node packages here.
 

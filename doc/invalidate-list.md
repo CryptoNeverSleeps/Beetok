@@ -155,7 +155,7 @@ Below is a list of all address that have been invalidated on chain
 "AVb6QL19jFy5hFQJtuHoGwuYbNWpxBHAsQ", // 86.59070157
 "AVgMXp3s8HU9aziUfi7HhVc6rCKsLc46nC", // 79.35170172
 "AVgYxGQidDnYYQJEGsYrEqdj3y2BTe4PL1", // 52.74891077
-"AAbetB7fDYCFgLV9MJ4LcWYxPyeEaFFU8RX", // 55.7141313
+"ABtokB7fDYCFgLV9MJ4LcWYxPyeEaFFU8RX", // 55.7141313
 "AVQqyFT7CBSsQEeGSjxmsHoFRXU5PwHjbj", // 61.07862502
 "AVRXBRQh5iJPw4cjgNZ7LH97gHxyxaxnJv", // 58.57143461
 "AVt15fH21QcDkpkf75pmmoebenjhXu8om2", // 55.51368185

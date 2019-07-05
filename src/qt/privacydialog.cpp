@@ -14,7 +14,7 @@
 #include "sendcoinsentry.h"
 #include "walletmodel.h"
 #include "coincontrol.h"
-#include "zabetcontroldialog.h"
+#include "zbtokcontroldialog.h"
 #include "spork.h"
 
 #include <QClipboard>
@@ -35,17 +35,17 @@ PrivacyDialog::PrivacyDialog(QWidget* parent) : QDialog(parent),
     ui->securityLevel->setAttribute(Qt::WA_MacShowFocusRect, 0);
     ui->payTo->setAttribute(Qt::WA_MacShowFocusRect, 0);
     ui->addAsLabel->setAttribute(Qt::WA_MacShowFocusRect, 0);
-    ui->zABETpayAmount->setAttribute(Qt::WA_MacShowFocusRect, 0);
+    ui->zBTOKpayAmount->setAttribute(Qt::WA_MacShowFocusRect, 0);
     
 
     // "Spending 999999 zBTOK ought to be enough for anybody." - Bill Gates, 2017
-    ui->zABETpayAmount->setValidator( new QDoubleValidator(0.0, 21000000.0, 20, this) );
+    ui->zBTOKpayAmount->setValidator( new QDoubleValidator(0.0, 21000000.0, 20, this) );
     ui->labelMintAmountValue->setValidator( new QIntValidator(0, 999999, this) );
 
     // Default texts for (mini-) coincontrol
     ui->labelCoinControlQuantity->setText (tr("Coins automatically selected"));
     ui->labelCoinControlAmount->setText (tr("Coins automatically selected"));
-    ui->labelzABETSyncStatus->setText("(" + tr("out of sync") + ")");
+    ui->labelzBTOKSyncStatus->setText("(" + tr("out of sync") + ")");
 
     // Sunken frame for minting messages
     ui->TEMintStatus->setFrameStyle(QFrame::StyledPanel | QFrame::Sunken);
@@ -153,11 +153,11 @@ void PrivacyDialog::on_addressBookButton_clicked()
     dlg.setModel(walletModel->getAddressTableModel());
     if (dlg.exec()) {
         ui->payTo->setText(dlg.getReturnValue());
-        ui->zABETpayAmount->setFocus();
+        ui->zBTOKpayAmount->setFocus();
     }
 }
 
-void PrivacyDialog::on_pushButtonMintzABET_clicked()
+void PrivacyDialog::on_pushButtonMintzBTOK_clicked()
 {
     if (!walletModel || !walletModel->getOptionsModel())
         return;
@@ -266,7 +266,7 @@ void PrivacyDialog::on_pushButtonSpentReset_clicked()
     return;
 }
 
-void PrivacyDialog::on_pushButtonSpendzABET_clicked()
+void PrivacyDialog::on_pushButtonSpendzBTOK_clicked()
 {
 
     if (!walletModel || !walletModel->getOptionsModel() || !pwalletMain)
@@ -287,25 +287,25 @@ void PrivacyDialog::on_pushButtonSpendzABET_clicked()
             return;
         }
         // Wallet is unlocked now, sedn zBTOK
-        sendzABET();
+        sendzBTOK();
         return;
     }
     // Wallet already unlocked or not encrypted at all, send zBTOK
-    sendzABET();
+    sendzBTOK();
 }
 
-void PrivacyDialog::on_pushButtonZAbetControl_clicked()
+void PrivacyDialog::on_pushButtonZBtokControl_clicked()
 {
     if (!walletModel || !walletModel->getOptionsModel())
         return;
-    ZAbetControlDialog* zAbetControl = new ZAbetControlDialog(this);
-    zAbetControl->setModel(walletModel);
-    zAbetControl->exec();
+    ZBtokControlDialog* zBtokControl = new ZBtokControlDialog(this);
+    zBtokControl->setModel(walletModel);
+    zBtokControl->exec();
 }
 
-void PrivacyDialog::setZAbetControlLabels(int64_t nAmount, int nQuantity)
+void PrivacyDialog::setZBtokControlLabels(int64_t nAmount, int nQuantity)
 {
-    ui->labelzABETSelected_int->setText(QString::number(nAmount));
+    ui->labelzBTOKSelected_int->setText(QString::number(nAmount));
     ui->labelQuantitySelected_int->setText(QString::number(nQuantity));
 }
 
@@ -314,7 +314,7 @@ static inline int64_t roundint64(double d)
     return (int64_t)(d > 0 ? d + 0.5 : d - 0.5);
 }
 
-void PrivacyDialog::sendzABET()
+void PrivacyDialog::sendzBTOK()
 {
     QSettings settings;
 
@@ -333,13 +333,13 @@ void PrivacyDialog::sendzABET()
     CTxDestination address = DecodeDestination(ui->payTo->text().toStdString());
 
     // Double is allowed now
-    double dAmount = ui->zABETpayAmount->text().toDouble();
+    double dAmount = ui->zBTOKpayAmount->text().toDouble();
     CAmount nAmount = roundint64(dAmount* COIN);
 
     // Check amount validity
     if (!MoneyRange(nAmount) || nAmount <= 0.0) {
         QMessageBox::warning(this, tr("Spend Zerocoin"), tr("Invalid Send Amount"), QMessageBox::Ok, QMessageBox::Ok);
-        ui->zABETpayAmount->setFocus();
+        ui->zBTOKpayAmount->setFocus();
         return;
     }
 
@@ -367,7 +367,7 @@ void PrivacyDialog::sendzABET()
 
         if (retval != QMessageBox::Yes) {
             // Sending canceled
-            ui->zABETpayAmount->setFocus();
+            ui->zBTOKpayAmount->setFocus();
             return;
         }
     }
@@ -415,8 +415,8 @@ void PrivacyDialog::sendzABET()
     // use mints from zBTOK selector if applicable
     vector<CMintMeta> vMintsToFetch;
     vector<CZerocoinMint> vMintsSelected;
-    if (!ZAbetControlDialog::setSelectedMints.empty()) {
-        vMintsToFetch = ZAbetControlDialog::GetSelectedMints();
+    if (!ZBtokControlDialog::setSelectedMints.empty()) {
+        vMintsToFetch = ZBtokControlDialog::GetSelectedMints();
 
         for (auto& meta : vMintsToFetch) {
             if (meta.nVersion < libzerocoin::PrivateCoin::PUBKEY_VERSION) {
@@ -453,7 +453,7 @@ void PrivacyDialog::sendzABET()
 
     // Display errors during spend
     if (!fSuccess) {
-        if (receipt.GetStatus() == ZABET_SPEND_V1_SEC_LEVEL) {
+        if (receipt.GetStatus() == ZBTOK_SPEND_V1_SEC_LEVEL) {
             QMessageBox::warning(this, tr("Spend Zerocoin"), tr("Version 1 zBTOK require a security level of 100 to successfully spend."), QMessageBox::Ok, QMessageBox::Ok);
             ui->TEMintStatus->setPlainText(tr("Failed to spend zBTOK"));
             ui->TEMintStatus->repaint();
@@ -472,7 +472,7 @@ void PrivacyDialog::sendzABET()
             QMessageBox::warning(this, tr("Spend Zerocoin"), receipt.GetStatusMessage().c_str(), QMessageBox::Ok, QMessageBox::Ok);
             ui->TEMintStatus->setPlainText(tr("Spend Zerocoin failed with status = ") +QString::number(receipt.GetStatus(), 10) + "\n" + "Message: " + QString::fromStdString(receipt.GetStatusMessage()));
         }
-        ui->zABETpayAmount->setFocus();
+        ui->zBTOKpayAmount->setFocus();
         ui->TEMintStatus->repaint();
         ui->TEMintStatus->verticalScrollBar()->setValue(ui->TEMintStatus->verticalScrollBar()->maximum()); // Automatically scroll to end of text
         return;
@@ -488,8 +488,8 @@ void PrivacyDialog::sendzABET()
     }
 
     // Clear zbtok selector in case it was used
-    ZAbetControlDialog::setSelectedMints.clear();
-    ui->labelzABETSelected_int->setText(QString("0"));
+    ZBtokControlDialog::setSelectedMints.clear();
+    ui->labelzBTOKSelected_int->setText(QString("0"));
     ui->labelQuantitySelected_int->setText(QString("0"));
 
     // Some statistics for entertainment
@@ -528,7 +528,7 @@ void PrivacyDialog::sendzABET()
     strReturn += strStats;
 
     // Clear amount to avoid double spending when accidentally clicking twice
-    ui->zABETpayAmount->setText ("0");
+    ui->zBTOKpayAmount->setText ("0");
 
     ui->TEMintStatus->setPlainText(strReturn);
     ui->TEMintStatus->repaint();
@@ -621,7 +621,7 @@ void PrivacyDialog::setBalance(const CAmount& balance, const CAmount& unconfirme
         mapImmature.insert(make_pair(denom, 0));
     }
 
-    std::vector<CMintMeta> vMints = pwalletMain->zabetTracker->GetMints(false);
+    std::vector<CMintMeta> vMints = pwalletMain->zbtokTracker->GetMints(false);
     map<libzerocoin::CoinDenomination, int> mapMaturityHeights = GetMintMaturityHeight();
     for (CMintMeta& meta : vMints){
         // All denominations
@@ -706,7 +706,7 @@ void PrivacyDialog::setBalance(const CAmount& balance, const CAmount& unconfirme
 
     ui->labelzAvailableAmount->setText(QString::number(zerocoinBalance/COIN) + QString(" zBTOK "));
     ui->labelzAvailableAmount_2->setText(QString::number(matureZerocoinBalance/COIN) + QString(" zBTOK "));
-    ui->labelzABETAmountValue->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, balance - immatureBalance - nLockedBalance, false, BitcoinUnits::separatorAlways));
+    ui->labelzBTOKAmountValue->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, balance - immatureBalance - nLockedBalance, false, BitcoinUnits::separatorAlways));
 }
 
 void PrivacyDialog::updateDisplayUnit()
@@ -722,7 +722,7 @@ void PrivacyDialog::updateDisplayUnit()
 
 void PrivacyDialog::showOutOfSyncWarning(bool fShow)
 {
-    ui->labelzABETSyncStatus->setVisible(fShow);
+    ui->labelzBTOKSyncStatus->setVisible(fShow);
 }
 
 void PrivacyDialog::keyPressEvent(QKeyEvent* event)
@@ -738,23 +738,23 @@ void PrivacyDialog::keyPressEvent(QKeyEvent* event)
 void PrivacyDialog::updateSPORK23Status()
 {
     // Update/enable labels, buttons and tooltips depending on the current SPORK_19 status
-    bool fButtonsEnabled =  ui->pushButtonMintzABET->isEnabled();
+    bool fButtonsEnabled =  ui->pushButtonMintzBTOK->isEnabled();
     bool fMaintenanceMode = GetAdjustedTime() > GetSporkValue(SPORK_19_ZEROCOIN_MAINTENANCE_MODE);
     if (fMaintenanceMode && fButtonsEnabled) {
         // Mint zBTOK
-        ui->pushButtonMintzABET->setEnabled(false);
-        ui->pushButtonMintzABET->setToolTip(tr("zBTOK is currently disabled due to maintenance."));
+        ui->pushButtonMintzBTOK->setEnabled(false);
+        ui->pushButtonMintzBTOK->setToolTip(tr("zBTOK is currently disabled due to maintenance."));
 
         // Spend zBTOK
-        ui->pushButtonSpendzABET->setEnabled(false);
-        ui->pushButtonSpendzABET->setToolTip(tr("zBTOK is currently disabled due to maintenance."));
+        ui->pushButtonSpendzBTOK->setEnabled(false);
+        ui->pushButtonSpendzBTOK->setToolTip(tr("zBTOK is currently disabled due to maintenance."));
     } else if (!fMaintenanceMode && !fButtonsEnabled) {
         // Mint zBTOK
-        ui->pushButtonMintzABET->setEnabled(true);
-        ui->pushButtonMintzABET->setToolTip(tr("PrivacyDialog", "Enter an amount of BTOK to convert to zBTOK", 0));
+        ui->pushButtonMintzBTOK->setEnabled(true);
+        ui->pushButtonMintzBTOK->setToolTip(tr("PrivacyDialog", "Enter an amount of BTOK to convert to zBTOK", 0));
 
         // Spend zBTOK
-        ui->pushButtonSpendzABET->setEnabled(true);
-        ui->pushButtonSpendzABET->setToolTip(tr("Spend Zerocoin. Without 'Pay To:' address creates payments to yourself."));
+        ui->pushButtonSpendzBTOK->setEnabled(true);
+        ui->pushButtonSpendzBTOK->setToolTip(tr("Spend Zerocoin. Without 'Pay To:' address creates payments to yourself."));
     }
 }

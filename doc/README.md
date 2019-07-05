@@ -13,8 +13,8 @@ The following are some helpful notes on how to run Beetok on your native platfor
 
 Unpack the files into a directory and run:
 
-- bin/32/beetok-qt (GUI, 32-bit) or bin/32/altbetd (headless, 32-bit)
-- bin/64/beetok-qt (GUI, 64-bit) or bin/64/altbetd (headless, 64-bit)
+- bin/32/beetok-qt (GUI, 32-bit) or bin/32/beetokd (headless, 32-bit)
+- bin/64/beetok-qt (GUI, 64-bit) or bin/64/beetokd (headless, 64-bit)
 
 ### Windows
 
@@ -42,7 +42,7 @@ The following are developer notes on how to build Beetok on your native platform
 
 Development
 ---------------------
-The Beetok repo's [root README](https://github.com/altbetproject/Beetok/blob/master/README.md) contains relevant information on the development process and automated testing.
+The Beetok repo's [root README](https://github.com/beetokproject/Beetok/blob/master/README.md) contains relevant information on the development process and automated testing.
 
 - [Developer Notes](developer-notes.md)
 - [Multiwallet Qt Development](multiwallet-qt.md)
