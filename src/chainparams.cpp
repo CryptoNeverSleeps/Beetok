@@ -127,14 +127,14 @@ public:
         nMinerThreads = 0;
 
         nTargetTimespan = 1 * 60; // Beetok: 1 day
-        nTargetSpacing = 60; // Beetok: 1 minute
+        nTargetSpacing = 1 * 60; // Beetok: 1 minute
         nLastPOWBlock = 200;
         nZerocoinStartHeight = INT_MAX;
         nMaturity = 20;
         nMasternodeCountDrift = 20;
         nMasternodeCollateralAmt = 2000;
         nMasternodeCollateralAmtNew = 5000;
-        nMinStakeInput = 30 * COIN;
+        nMinStakeInput = 20 * COIN;
         nModifierUpdateBlock = 615800;
         nMaxMoneyOut = 82000000 * COIN;
         const char* pszTimestamp = "National Suicide Prevention Hotline 1-800-273-8255";
