@@ -188,7 +188,7 @@ public:
         nEnforceNewSporkKey = 1563580800; //07/20/2019 @ 12:00am (UTC)
         nRejectOldSporkKey = 1563580800; //07/20/2019 @ 12:00am (UTC)
 		
-		strSporkKey = ""; //This is owned by project owner.
+		strSporkKey = "024e5c4ba539033389b20d7ae149d8b98338cc90b6db94b1fb79bf87ee99902721"; //This is owned by project owner.
         strSporkKeyOld = "03fd7122ee805bf78beac809cb4f5178214d0e83a7da09ebe167de7934df20e2bb"; //This is owned by TFinch for creation of project
         strObfuscationPoolDummyAddress = "BPaLkBnuXTLqB1VdC5RGUeHYq88X8YcWcm";
         nStartMasternodePayments = 1562110350;
