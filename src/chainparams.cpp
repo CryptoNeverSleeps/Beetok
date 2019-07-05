@@ -253,7 +253,7 @@ public:
 
 		//printf("genesis.GetHash = %s\n", genesis.GetHash().ToString().c_str());
         hashGenesisBlock = genesis.GetHash();
-        assert(hashGenesisBlock == uint256("0x7e911c8c76848877a8975afca80582d8bd083f8b6b45f8fd0a3aea956d73c90a"));
+        assert(hashGenesisBlock == uint256("0x1"));
 
         vFixedSeeds.clear();
         vSeeds.clear();
@@ -323,7 +323,7 @@ public:
 
         hashGenesisBlock = genesis.GetHash();
         nDefaultPort = 39793;
-        //assert(hashGenesisBlock == uint256("0x7e911c8c76848877a8975afca80582d8bd083f8b6b45f8fd0a3aea956d73c90a"));
+        //assert(hashGenesisBlock == uint256("0x001"));
 
 
         vFixedSeeds.clear(); //! Testnet mode doesn't have any fixed seeds.
