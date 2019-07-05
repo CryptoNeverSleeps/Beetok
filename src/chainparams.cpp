@@ -156,7 +156,7 @@ public:
         hashGenesisBlock = genesis.GetHash();
         //printf("genesis.GetHash = %s\n", genesis.GetHash().ToString().c_str());
         //printf("genesis.hashMerkleRoot = %s\n", genesis.hashMerkleRoot.ToString().c_str());
-        assert(hashGenesisBlock == uint256("0x0xca3325b02b690c6dc912a2d007e8a8d51dc1792c44ef9fcf12a7674d2d5a1ac8"));
+        assert(hashGenesisBlock == uint256("0xca3325b02b690c6dc912a2d007e8a8d51dc1792c44ef9fcf12a7674d2d5a1ac8"));
         assert(genesis.hashMerkleRoot == uint256("0x9077e2c47f5646ac3764bea0493ee2dcad2df2f948ac6769d2fe27cb0ed9540e"));
 
         vSeeds.push_back(CDNSSeedData("140.82.48.162", "140.82.48.162"));
@@ -253,7 +253,7 @@ public:
 
 		//printf("genesis.GetHash = %s\n", genesis.GetHash().ToString().c_str());
         hashGenesisBlock = genesis.GetHash();
-        assert(hashGenesisBlock == uint256("0x0xca3325b02b690c6dc912a2d007e8a8d51dc1792c44ef9fcf12a7674d2d5a1ac8"));
+        assert(hashGenesisBlock == uint256("0xca3325b02b690c6dc912a2d007e8a8d51dc1792c44ef9fcf12a7674d2d5a1ac8"));
 
         vFixedSeeds.clear();
         vSeeds.clear();
@@ -323,7 +323,7 @@ public:
 
         hashGenesisBlock = genesis.GetHash();
         nDefaultPort = 39793;
-        //assert(hashGenesisBlock == uint256("0x0xca3325b02b690c6dc912a2d007e8a8d51dc1792c44ef9fcf12a7674d2d5a1ac8"));
+        //assert(hashGenesisBlock == uint256("0xca3325b02b690c6dc912a2d007e8a8d51dc1792c44ef9fcf12a7674d2d5a1ac8"));
 
 
         vFixedSeeds.clear(); //! Testnet mode doesn't have any fixed seeds.
