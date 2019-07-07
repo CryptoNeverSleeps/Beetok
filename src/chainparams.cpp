@@ -65,18 +65,18 @@ static const Checkpoints::CCheckpointData data = {
 };
 
 static Checkpoints::MapCheckpoints mapCheckpointsTestnet =
-    boost::assign::map_list_of(0, uint256("0x1"));
+    boost::assign::map_list_of(0, uint256("0x8ab5bd3c2a0bd5f1755587c725b1cee1fbe9d48101993818b29519c374087052"));
 static const Checkpoints::CCheckpointData dataTestnet = {
     &mapCheckpointsTestnet,
-	1562453426,
+    1562470070,
     0,
     250};
 
 static Checkpoints::MapCheckpoints mapCheckpointsRegtest =
-    boost::assign::map_list_of(0, uint256("0x001"));
+    boost::assign::map_list_of(0, uint256("0x8ab5bd3c2a0bd5f1755587c725b1cee1fbe9d48101993818b29519c374087052"));
 static const Checkpoints::CCheckpointData dataRegtest = {
     &mapCheckpointsRegtest,
-	1562453426,
+    1562470070,
     0,
     100};
 
@@ -174,7 +174,7 @@ public:
 
         convertSeed6(vFixedSeeds, pnSeed6_main, ARRAYLEN(pnSeed6_main));
 
-        fMiningRequiresPeers = true;
+        fMiningRequiresPeers = false;
         fAllowMinDifficultyBlocks = false;
         fDefaultConsistencyChecks = false;
         fRequireStandard = true;
@@ -248,12 +248,12 @@ public:
         nZerocoinLastOldParams = INT_MAX;
 
         //! Modify the testnet genesis block so the timestamp is valid for a later start.
-        genesis.nTime = 1562453426;
-        genesis.nNonce = 101455;
+        genesis.nTime = 1562470070;
+        genesis.nNonce = 652550;
 
 		//printf("genesis.GetHash = %s\n", genesis.GetHash().ToString().c_str());
         hashGenesisBlock = genesis.GetHash();
-        //assert(hashGenesisBlock == uint256("0x1"));
+        assert(hashGenesisBlock == uint256("0x8ab5bd3c2a0bd5f1755587c725b1cee1fbe9d48101993818b29519c374087052"));
 
         vFixedSeeds.clear();
         vSeeds.clear();
@@ -282,7 +282,7 @@ public:
         strSporkKey = "03fd7122ee805bf78beac809cb4f5178214d0e83a7da09ebe167de7934df20e2bb";
 
         strObfuscationPoolDummyAddress = "BPaLkBnuXTLqB1VdC5RGUeHYq88X8YcWcm";
-        nStartMasternodePayments = 1562453426;
+        nStartMasternodePayments = 1562470070;
 	}
     const Checkpoints::CCheckpointData& Checkpoints() const
     {
@@ -313,9 +313,9 @@ public:
         nTargetTimespan = 24 * 60 * 60; // Beetok: 1 day
         nTargetSpacing = 1 * 60;        // Beetok: 1 minutes
         bnProofOfWorkLimit = ~uint256(0) >> 1;
-        genesis.nTime = 1562453426;
+        genesis.nTime = 1562470070;
         genesis.nBits = 504365040;
-        genesis.nNonce = 101455;
+        genesis.nNonce = 652550;
         nMaturity = 0;
         nLastPOWBlock = 999999999; // PoS complicates Regtest because of timing issues
         nZerocoinLastOldParams = 499;
@@ -323,7 +323,7 @@ public:
 
         hashGenesisBlock = genesis.GetHash();
         nDefaultPort = 39793;
-        //assert(hashGenesisBlock == uint256("0x001"));
+        assert(hashGenesisBlock == uint256("0x8ab5bd3c2a0bd5f1755587c725b1cee1fbe9d48101993818b29519c374087052"));
 
 
         vFixedSeeds.clear(); //! Testnet mode doesn't have any fixed seeds.
