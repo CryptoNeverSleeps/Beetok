@@ -129,7 +129,7 @@ public:
         nTargetTimespan = 1 * 60; // Beetok: 1 day
         nTargetSpacing = 1 * 60; // Beetok: 1 minute
         nLastPOWBlock = 200;
-        nZerocoinStartHeight = 999999999999;
+        nZerocoinStartHeight = INT_MAX;
         nMaturity = 20;
         nMasternodeCountDrift = 20;
         nMasternodeCollateralAmt = 2000;
