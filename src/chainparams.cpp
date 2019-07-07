@@ -55,10 +55,10 @@ static void convertSeed6(std::vector<CAddress>& vSeedsOut, const SeedSpec6* data
 // + Contains no strange transactions
 static Checkpoints::MapCheckpoints mapCheckpoints =
     boost::assign::map_list_of
-	(0, uint256("0x192ec2acd22c1265b125657b9bb64cdcdf97b7ca0c3799d0f4a6926fbfa97a23"));
+	(0, uint256("0x000000088f5354ded039e228b5da210a4380deecd188951b7ad4bf1e6316e175"));
 static const Checkpoints::CCheckpointData data = {
     &mapCheckpoints,
-	1562453426, // * UNIX timestamp of last checkpoint block
+	1562470070, // * UNIX timestamp of last checkpoint block
     0,     // * total number of transactions between genesis and last checkpoint
                 //   (the tx=... number in the SetBestChain debug.log lines)
     200         // * estimated number of transactions per day after checkpoint
@@ -149,15 +149,15 @@ public:
         genesis.hashPrevBlock = 0;
         genesis.hashMerkleRoot = genesis.BuildMerkleTree();
         genesis.nVersion = 1;
-        genesis.nTime = 1562453426;
+        genesis.nTime = 1562470070;
         genesis.nBits = 504365040;
-        genesis.nNonce = 101455;
+        genesis.nNonce = 652550;
 
         hashGenesisBlock = genesis.GetHash();
-        //printf("genesis.GetHash = %s\n", genesis.GetHash().ToString().c_str());
-        //printf("genesis.hashMerkleRoot = %s\n", genesis.hashMerkleRoot.ToString().c_str());
-        assert(hashGenesisBlock == uint256("0x192ec2acd22c1265b125657b9bb64cdcdf97b7ca0c3799d0f4a6926fbfa97a23"));
-        assert(genesis.hashMerkleRoot == uint256("0x89c57ede80f9489547c381b653c4f70d5057a2570ce7b48c9e7fa7afbade012c"));
+        printf("genesis.GetHash = %s\n", genesis.GetHash().ToString().c_str());
+        printf("genesis.hashMerkleRoot = %s\n", genesis.hashMerkleRoot.ToString().c_str());
+        assert(hashGenesisBlock == uint256("0x000000088f5354ded039e228b5da210a4380deecd188951b7ad4bf1e6316e175"));
+        assert(genesis.hashMerkleRoot == uint256("0x5a6cfbeaf2c552794f901cb9e16ecc934b04d56e5bf8f1d9fe954667bb7c7c61"));
 
         vSeeds.push_back(CDNSSeedData("140.82.48.162", "140.82.48.162"));
         vSeeds.push_back(CDNSSeedData("8.9.36.49", "8.9.36.49"));
@@ -191,7 +191,7 @@ public:
 		strSporkKey = "024e5c4ba539033389b20d7ae149d8b98338cc90b6db94b1fb79bf87ee99902721"; //This is owned by project owner.
         strSporkKeyOld = "03fd7122ee805bf78beac809cb4f5178214d0e83a7da09ebe167de7934df20e2bb"; //This is owned by TFinch for creation of project
         strObfuscationPoolDummyAddress = "BPaLkBnuXTLqB1VdC5RGUeHYq88X8YcWcm";
-        nStartMasternodePayments = 1562453426;
+        nStartMasternodePayments = 1562470070;
 
         /** Zerocoin */
 		/* This is not active */
